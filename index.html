@@ -6,16 +6,30 @@
 <title>7 Ngày Có Khánh Linh</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
 body{
-    margin:0;
-    font-family: 'Segoe UI', sans-serif;
-    background: radial-gradient(circle at top, #1f1f3d, #0f0f1f);
+    font-family:'Segoe UI',sans-serif;
+    background: radial-gradient(circle at top, #1f1f3d, #0b0b18 70%);
     color:white;
     text-align:center;
     overflow-x:hidden;
+    transition:0.8s;
 }
 
-/* nền sao nhẹ */
+/* ánh sáng chuột */
+.cursor-light{
+    position:fixed;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    pointer-events:none;
+    background:radial-gradient(circle, rgba(255,107,214,0.25) 0%, transparent 70%);
+    transform:translate(-50%,-50%);
+    z-index:0;
+}
+
+/* nền sao */
 body::before{
     content:"";
     position:fixed;
@@ -31,30 +45,64 @@ body::before{
     to{transform:translate(-600px,-600px);}
 }
 
-h1{
-    margin-top:100px;
-    font-size:2.8rem;
-}
-
-.typing{
-    border-right:3px solid #ff6bd6;
-    display:inline-block;
-    white-space:nowrap;
-    overflow:hidden;
-    animation:typing 4s steps(40,end), blink .8s infinite;
-}
-
-@keyframes typing{
-    from{width:0}
-    to{width:100%}
-}
-
-@keyframes blink{
-    50%{border-color:transparent}
-}
-
-.section{
+/* HERO */
+.hero{
     margin-top:120px;
+    padding:20px;
+    position:relative;
+    z-index:1;
+}
+
+h1{
+    font-size:3rem;
+}
+
+.subtitle{
+    margin-top:15px;
+    color:#ffb6f9;
+}
+
+/* Đồng hồ */
+#counter{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.time-box{
+    background:rgba(255,255,255,0.08);
+    padding:20px 25px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    min-width:90px;
+    transition:0.3s;
+}
+
+.time-box:hover{
+    transform:translateY(-5px);
+    background:rgba(255,107,214,0.2);
+}
+
+.time-box span{
+    font-size:2rem;
+    font-weight:bold;
+    display:block;
+    color:#ff6bd6;
+}
+
+/* Section text */
+.intro{
+    margin-top:120px;
+    font-size:1.2rem;
+    opacity:0.8;
+    padding:0 20px;
+}
+
+/* Cards */
+.section{
+    margin-top:80px;
 }
 
 .cards{
@@ -70,7 +118,7 @@ h1{
     border-radius:25px;
     backdrop-filter:blur(10px);
     opacity:0;
-    transform:translateY(30px);
+    transform:translateY(40px);
     transition:0.6s;
 }
 
@@ -84,50 +132,109 @@ h1{
     box-shadow:0 0 20px rgba(255,107,214,0.4);
 }
 
+/* Button */
 button{
-    margin-top:60px;
-    padding:16px 35px;
+    margin-top:80px;
+    padding:18px 40px;
     border:none;
-    border-radius:30px;
+    border-radius:40px;
     background:#ff4ecb;
     color:white;
-    font-size:1rem;
+    font-size:1.1rem;
     cursor:pointer;
     animation:pulse 2s infinite;
     transition:0.3s;
+    z-index:2;
+    position:relative;
 }
 
 @keyframes pulse{
     0%{box-shadow:0 0 0 0 rgba(255,78,203,0.6);}
-    70%{box-shadow:0 0 0 20px rgba(255,78,203,0);}
+    70%{box-shadow:0 0 0 25px rgba(255,78,203,0);}
     100%{box-shadow:0 0 0 0 rgba(255,78,203,0);}
 }
 
-#hiddenMessage{
-    margin-top:40px;
-    font-size:1.4rem;
+/* Hidden message cinematic */
+#overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.8);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    opacity:0;
+    pointer-events:none;
+    transition:1s;
+    text-align:center;
+    padding:20px;
+}
+
+#overlay.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+#overlay p{
+    font-size:1.6rem;
     color:#ffb6f9;
-    display:none;
+    animation:fadeUp 2s ease forwards;
+}
+
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
 }
 
 /* tim bay */
 .heart{
     position:fixed;
     color:#ff4ecb;
-    animation:float 3s linear forwards;
+    animation:float 4s linear forwards;
 }
 
 @keyframes float{
     0%{transform:translateY(0); opacity:1;}
-    100%{transform:translateY(-600px); opacity:0;}
+    100%{transform:translateY(-800px); opacity:0;}
+}
+
+/* sao băng */
+.shooting-star{
+    position:fixed;
+    width:3px;
+    height:3px;
+    background:white;
+    box-shadow:0 0 10px white;
+    animation:shoot 1s linear forwards;
+}
+
+@keyframes shoot{
+    0%{transform:translate(0,0);}
+    100%{transform:translate(-800px,400px);}
 }
 </style>
 </head>
 
 <body>
 
-<h1><span class="typing">7 ngày có Khánh Linh ✨</span></h1>
-<p style="color:#ffb6f9">Và anh đã quen với việc mỗi ngày đều có em.</p>
+<div class="cursor-light" id="cursorLight"></div>
+
+<div class="hero">
+    <h1 id="nameClick">7 ngày có Khánh Linh ✨</h1>
+    <p class="subtitle">Và anh đã quen với việc mỗi ngày đều có em.</p>
+
+    <div id="counter">
+        <div class="time-box"><span id="days">0</span><small>Ngày</small></div>
+        <div class="time-box"><span id="hours">0</span><small>Giờ</small></div>
+        <div class="time-box"><span id="minutes">0</span><small>Phút</small></div>
+        <div class="time-box"><span id="seconds">0</span><small>Giây</small></div>
+    </div>
+</div>
+
+<div class="intro">
+    7 ngày không dài.  
+    Nhưng đủ để anh thấy Khánh Linh không phải là người anh muốn lướt qua.
+</div>
 
 <div class="section">
     <h2>7 điều anh thích ở Khánh Linh</h2>
@@ -142,41 +249,89 @@ button{
     </div>
 </div>
 
-<button onclick="showMessage()">Nếu Khánh Linh là của anh 💗</button>
+<button onclick="showClimax()">Nếu Khánh Linh là của anh 💗</button>
 
-<div id="hiddenMessage">
-    Cảm ơn vì 7 ngày vừa rồi.  
-    anh mong sẽ còn rất nhiều lần "7 ngày" như thế nữa, cùng Khánh Linh. ✨
+<div id="overlay">
+    <p>
+        Cảm ơn vì 7 ngày vừa rồi. <br><br>
+        Anh mong sẽ còn rất nhiều lần "7 ngày" như thế nữa,<br>
+        cùng Khánh Linh. ✨
+    </p>
 </div>
 
 <script>
-const cards=document.querySelectorAll('.card');
+// ===== Đồng hồ =====
+const startDate = new Date("2026-02-25T00:29:00");
+function updateCounter(){
+    const now=new Date();
+    const diff=now-startDate;
+    document.getElementById("days").textContent=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("hours").textContent=Math.floor((diff/(1000*60*60))%24);
+    document.getElementById("minutes").textContent=Math.floor((diff/(1000*60))%60);
+    document.getElementById("seconds").textContent=Math.floor((diff/1000)%60);
+}
+setInterval(updateCounter,1000);
+updateCounter();
 
+// Scroll card animation
+const cards=document.querySelectorAll('.card');
 window.addEventListener('scroll',()=>{
     cards.forEach(card=>{
-        const rect=card.getBoundingClientRect();
-        if(rect.top<window.innerHeight-50){
+        if(card.getBoundingClientRect().top<window.innerHeight-50){
             card.classList.add('show');
         }
     });
 });
 
-function showMessage(){
-    document.getElementById("hiddenMessage").style.display="block";
-    createHearts();
+// Ánh sáng chuột
+document.addEventListener("mousemove",(e)=>{
+    const light=document.getElementById("cursorLight");
+    light.style.left=e.clientX+"px";
+    light.style.top=e.clientY+"px";
+});
+
+// Climax
+function showClimax(){
+    document.getElementById("overlay").classList.add("show");
+    createHearts(30);
+    shootingStarRain();
 }
 
-function createHearts(){
-    for(let i=0;i<15;i++){
+// Tim
+function createHearts(count){
+    for(let i=0;i<count;i++){
         let heart=document.createElement("div");
         heart.innerHTML="❤";
         heart.classList.add("heart");
         heart.style.left=Math.random()*100+"vw";
-        heart.style.fontSize=(Math.random()*20+10)+"px";
+        heart.style.fontSize=(Math.random()*20+15)+"px";
         document.body.appendChild(heart);
-        setTimeout(()=>heart.remove(),3000);
+        setTimeout(()=>heart.remove(),4000);
     }
 }
+
+// Mưa sao băng
+function shootingStarRain(){
+    for(let i=0;i<20;i++){
+        setTimeout(()=>{
+            let star=document.createElement("div");
+            star.classList.add("shooting-star");
+            star.style.top=Math.random()*50+"vh";
+            star.style.left=window.innerWidth+"px";
+            document.body.appendChild(star);
+            setTimeout(()=>star.remove(),1000);
+        },i*150);
+    }
+}
+
+// Bí mật click 5 lần
+let clickCount=0;
+document.getElementById("nameClick").addEventListener("click",()=>{
+    clickCount++;
+    if(clickCount==5){
+        alert("Anh chọn em.");
+    }
+});
 </script>
 
 </body>
