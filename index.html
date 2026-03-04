@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7 Ngày Có Khánh Linh</title>
+
+<style>
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #1f1f3d, #0f0f1f);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+/* nền sao nhẹ */
+body::before{
+    content:"";
+    position:fixed;
+    width:200%;
+    height:200%;
+    background-image:radial-gradient(white 1px, transparent 1px);
+    background-size:40px 40px;
+    opacity:0.05;
+    animation:moveBg 80s linear infinite;
+}
+@keyframes moveBg{
+    from{transform:translate(0,0);}
+    to{transform:translate(-600px,-600px);}
+}
+
+h1{
+    margin-top:100px;
+    font-size:2.8rem;
+}
+
+.typing{
+    border-right:3px solid #ff6bd6;
+    display:inline-block;
+    white-space:nowrap;
+    overflow:hidden;
+    animation:typing 4s steps(40,end), blink .8s infinite;
+}
+
+@keyframes typing{
+    from{width:0}
+    to{width:100%}
+}
+
+@keyframes blink{
+    50%{border-color:transparent}
+}
+
+.section{
+    margin-top:120px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:25px;
+    padding:40px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    padding:25px;
+    border-radius:25px;
+    backdrop-filter:blur(10px);
+    opacity:0;
+    transform:translateY(30px);
+    transition:0.6s;
+}
+
+.card.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.card:hover{
+    background:rgba(255,107,214,0.15);
+    box-shadow:0 0 20px rgba(255,107,214,0.4);
+}
+
+button{
+    margin-top:60px;
+    padding:16px 35px;
+    border:none;
+    border-radius:30px;
+    background:#ff4ecb;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+    animation:pulse 2s infinite;
+    transition:0.3s;
+}
+
+@keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(255,78,203,0.6);}
+    70%{box-shadow:0 0 0 20px rgba(255,78,203,0);}
+    100%{box-shadow:0 0 0 0 rgba(255,78,203,0);}
+}
+
+#hiddenMessage{
+    margin-top:40px;
+    font-size:1.4rem;
+    color:#ffb6f9;
+    display:none;
+}
+
+/* tim bay */
+.heart{
+    position:fixed;
+    color:#ff4ecb;
+    animation:float 3s linear forwards;
+}
+
+@keyframes float{
+    0%{transform:translateY(0); opacity:1;}
+    100%{transform:translateY(-600px); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<h1><span class="typing">7 ngày có Khánh Linh ✨</span></h1>
+<p style="color:#ffb6f9">Và mình đã quen với việc mỗi ngày đều có cậu.</p>
+
+<div class="section">
+    <h2>7 điều mình thích ở Khánh Linh</h2>
+    <div class="cards">
+        <div class="card">Cách cậu lắng nghe mình nói, dù là chuyện nhỏ xíu.</div>
+        <div class="card">Những lúc cậu suy nghĩ nhiều nhưng vẫn cố tỏ ra bình thường.</div>
+        <div class="card">Cách cậu làm những điều giản đơn trở nên đặc biệt.</div>
+        <div class="card">Sự dịu dàng rất riêng mà không phải ai cũng thấy.</div>
+        <div class="card">Năng lượng vừa nhẹ nhàng vừa khó đoán của cậu.</div>
+        <div class="card">Cảm giác an toàn khi ở cạnh Khánh Linh.</div>
+        <div class="card">Và đơn giản là… vì đó là Khánh Linh.</div>
+    </div>
+</div>
+
+<button onclick="showMessage()">Nếu Khánh Linh là của mình 💗</button>
+
+<div id="hiddenMessage">
+    Cảm ơn vì 7 ngày vừa rồi.  
+    Mình mong sẽ còn rất nhiều lần "7 ngày" như thế nữa, cùng Khánh Linh. ✨
+</div>
+
+<script>
+const cards=document.querySelectorAll('.card');
+
+window.addEventListener('scroll',()=>{
+    cards.forEach(card=>{
+        const rect=card.getBoundingClientRect();
+        if(rect.top<window.innerHeight-50){
+            card.classList.add('show');
+        }
+    });
+});
+
+function showMessage(){
+    document.getElementById("hiddenMessage").style.display="block";
+    createHearts();
+}
+
+function createHearts(){
+    for(let i=0;i<15;i++){
+        let heart=document.createElement("div");
+        heart.innerHTML="❤";
+        heart.classList.add("heart");
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.fontSize=(Math.random()*20+10)+"px";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),3000);
+    }
+}
+</script>
+
+</body>
+</html>
