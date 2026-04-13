@@ -3,336 +3,2093 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>7 Ngày Có Khánh Linh</title>
-
+<title>PERSONAL UNIVERSE — Dự Án Biệt Thự 5000m²</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --gold-pale: #F8ECC0;
+    --black: #0A0A0A;
+    --dark: #111111;
+    --dark2: #1A1A1A;
+    --dark3: #242424;
+    --dark4: #2E2E2E;
+    --white: #F5F0E8;
+    --muted: #8A8078;
+    --red: #C0392B;
+    --green: #27AE60;
+    --blue: #2980B9;
+    --cyan: #16A085;
+  }
 
-body{
-    font-family:'Segoe UI',sans-serif;
-    background: radial-gradient(circle at top, #1f1f3d, #0b0b18 70%);
-    color:white;
-    text-align:center;
-    overflow-x:hidden;
-    transition:0.8s;
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ánh sáng chuột */
-.cursor-light{
-    position:fixed;
-    width:300px;
-    height:300px;
-    border-radius:50%;
-    pointer-events:none;
-    background:radial-gradient(circle, rgba(255,107,214,0.25) 0%, transparent 70%);
-    transform:translate(-50%,-50%);
-    z-index:0;
-}
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+  }
 
-/* nền sao */
-body::before{
-    content:"";
-    position:fixed;
-    width:200%;
-    height:200%;
-    background-image:radial-gradient(white 1px, transparent 1px);
-    background-size:40px 40px;
-    opacity:0.05;
-    animation:moveBg 80s linear infinite;
-}
-@keyframes moveBg{
-    from{transform:translate(0,0);}
-    to{transform:translate(-600px,-600px);}
-}
+  /* ===== COVER ===== */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    border-bottom: 1px solid var(--gold);
+    position: relative;
+    background: 
+      repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px),
+      repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px),
+      var(--black);
+  }
 
-/* HERO */
-.hero{
-    margin-top:120px;
-    padding:20px;
-    position:relative;
-    z-index:1;
-}
+  .cover-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 6px 20px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+  }
 
-h1{
-    font-size:3rem;
-}
+  .cover h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 12vw, 160px);
+    letter-spacing: 6px;
+    color: var(--gold);
+    line-height: 0.9;
+    margin-bottom: 20px;
+  }
 
-.subtitle{
-    margin-top:15px;
-    color:#ffb6f9;
-}
+  .cover h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 4vw, 52px);
+    letter-spacing: 10px;
+    color: var(--white);
+    opacity: 0.6;
+    margin-bottom: 50px;
+  }
 
-/* Đồng hồ */
-#counter{
-    margin-top:40px;
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    flex-wrap:wrap;
-}
+  .cover-stats {
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
 
-.time-box{
-    background:rgba(255,255,255,0.08);
-    padding:20px 25px;
-    border-radius:20px;
-    backdrop-filter:blur(10px);
-    min-width:90px;
-    transition:0.3s;
-}
+  .stat {
+    text-align: center;
+  }
 
-.time-box:hover{
-    transform:translateY(-5px);
-    background:rgba(255,107,214,0.2);
-}
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--gold);
+    display: block;
+  }
 
-.time-box span{
-    font-size:2rem;
-    font-weight:bold;
-    display:block;
-    color:#ff6bd6;
-}
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
 
-/* Section text */
-.intro{
-    margin-top:120px;
-    font-size:1.2rem;
-    opacity:0.8;
-    padding:0 20px;
-}
+  .total-price-banner {
+    background: var(--gold);
+    color: var(--black);
+    padding: 20px 60px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 4px;
+  }
 
-/* Cards */
-.section{
-    margin-top:80px;
-}
+  /* ===== TOC ===== */
+  .toc {
+    padding: 60px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--dark4);
+  }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:25px;
-    padding:40px;
-}
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 30px;
+  }
 
-.card{
-    background:rgba(255,255,255,0.05);
-    padding:25px;
-    border-radius:25px;
-    backdrop-filter:blur(10px);
-    opacity:0;
-    transform:translateY(40px);
-    transition:0.6s;
-}
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2px;
+  }
 
-.card.show{
-    opacity:1;
-    transform:translateY(0);
-}
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--dark2);
+    cursor: pointer;
+    transition: background 0.15s;
+    text-decoration: none;
+    color: inherit;
+  }
 
-.card:hover{
-    background:rgba(255,107,214,0.15);
-    box-shadow:0 0 20px rgba(255,107,214,0.4);
-}
+  .toc-item:hover { background: var(--dark3); }
 
-/* Button */
-button{
-    margin-top:80px;
-    padding:18px 40px;
-    border:none;
-    border-radius:40px;
-    background:#ff4ecb;
-    color:white;
-    font-size:1.1rem;
-    cursor:pointer;
-    animation:pulse 2s infinite;
-    transition:0.3s;
-    z-index:2;
-    position:relative;
-}
+  .toc-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    min-width: 30px;
+  }
 
-@keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(255,78,203,0.6);}
-    70%{box-shadow:0 0 0 25px rgba(255,78,203,0);}
-    100%{box-shadow:0 0 0 0 rgba(255,78,203,0);}
-}
+  .toc-name {
+    font-size: 13px;
+    font-weight: 500;
+  }
 
-/* Hidden message cinematic */
-#overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.8);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    opacity:0;
-    pointer-events:none;
-    transition:1s;
-    text-align:center;
-    padding:20px;
-}
+  .toc-price {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
 
-#overlay.show{
-    opacity:1;
-    pointer-events:auto;
-}
+  /* ===== ZONE SECTIONS ===== */
+  .zone {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    border-bottom: 1px solid var(--dark4);
+  }
 
-#overlay p{
-    font-size:1.6rem;
-    color:#ffb6f9;
-    animation:fadeUp 2s ease forwards;
-}
+  .zone-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--dark3);
+  }
 
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(20px);}
-    to{opacity:1;transform:translateY(0);}
-}
+  .zone-icon {
+    font-size: 48px;
+    line-height: 1;
+    min-width: 60px;
+    text-align: center;
+  }
 
-/* tim bay */
-.heart{
-    position:fixed;
-    color:#ff4ecb;
-    animation:float 4s linear forwards;
-}
+  .zone-meta { flex: 1; }
 
-@keyframes float{
-    0%{transform:translateY(0); opacity:1;}
-    100%{transform:translateY(-800px); opacity:0;}
-}
+  .zone-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
 
-/* sao băng */
-.shooting-star{
-    position:fixed;
-    width:3px;
-    height:3px;
-    background:white;
-    box-shadow:0 0 10px white;
-    animation:shoot 1s linear forwards;
-}
+  .zone-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 8px;
+    line-height: 1;
+  }
 
-@keyframes shoot{
-    0%{transform:translate(0,0);}
-    100%{transform:translate(-800px,400px);}
-}
+  .zone-subtitle {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .zone-total {
+    text-align: right;
+  }
+
+  .zone-total-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .zone-total-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--gold-light);
+  }
+
+  /* ===== SUBSECTION ===== */
+  .subsection {
+    margin-bottom: 40px;
+  }
+
+  .subsection-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    padding: 12px 20px;
+    background: var(--dark3);
+    border-left: 3px solid var(--gold);
+    margin-bottom: 2px;
+  }
+
+  /* ===== ITEM TABLE ===== */
+  .item-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .item-table thead tr {
+    background: var(--dark2);
+  }
+
+  .item-table th {
+    padding: 10px 16px;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .item-table th:last-child,
+  .item-table td:last-child { text-align: right; }
+
+  .item-table td {
+    padding: 11px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--dark3);
+    vertical-align: top;
+  }
+
+  .item-table tr:hover td { background: var(--dark2); }
+
+  .item-name { font-weight: 600; color: var(--white); }
+  .item-brand { 
+    font-size: 11px; 
+    color: var(--gold); 
+    font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap;
+  }
+  .item-spec { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .item-price { 
+    font-family: 'JetBrains Mono', monospace; 
+    font-size: 13px;
+    color: var(--gold-light);
+    white-space: nowrap;
+  }
+  .item-usd { 
+    font-size: 11px; 
+    color: var(--muted); 
+    margin-top: 2px;
+  }
+  .item-qty {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .subtotal-row td {
+    background: var(--dark3);
+    font-weight: 700;
+    color: var(--gold);
+    font-size: 13px;
+    border-bottom: 2px solid var(--gold);
+  }
+
+  /* ===== GRAND TOTAL ===== */
+  .grand-total {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    text-align: center;
+  }
+
+  .grand-total-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .grand-total-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 8vw, 96px);
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+  }
+
+  .grand-total-usd {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    color: var(--muted);
+    margin-bottom: 50px;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 2px;
+    margin-top: 40px;
+    text-align: left;
+  }
+
+  .summary-item {
+    background: var(--dark2);
+    padding: 16px 20px;
+  }
+
+  .summary-zone {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .summary-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: var(--gold-light);
+  }
+
+  /* ===== TAG CHIPS ===== */
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border: 1px solid;
+    text-transform: uppercase;
+    margin-right: 4px;
+    margin-top: 4px;
+  }
+
+  .tag-sci { border-color: var(--cyan); color: var(--cyan); }
+  .tag-pro { border-color: var(--gold); color: var(--gold); }
+  .tag-ultra { border-color: #9B59B6; color: #9B59B6; }
+
+  /* ===== NOTES ===== */
+  .note {
+    background: var(--dark2);
+    border-left: 3px solid var(--cyan);
+    padding: 12px 20px;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+
+  .note strong { color: var(--white); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 40px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--dark4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-top: 1px solid var(--dark3);
+  }
+
+  @media print {
+    body { background: white; color: black; }
+    .cover { background: white; }
+  }
+
+  @media (max-width: 700px) {
+    .zone-header { flex-direction: column; }
+    .zone-total { text-align: left; }
+    .cover-stats { gap: 30px; }
+    .total-price-banner { padding: 16px 20px; font-size: 18px; }
+    .item-table th:nth-child(3),
+    .item-table td:nth-child(3) { display: none; }
+  }
 </style>
 </head>
-
 <body>
 
-<div class="cursor-light" id="cursorLight"></div>
-
-<div class="hero">
-    <h1 id="nameClick">7 ngày có Linh =)))</h1>
-    <p class="subtitle">Và anh đã quen với việc mỗi ngày đều có em.</p>
-
-    <div id="counter">
-        <div class="time-box"><span id="days">0</span><small>Ngày</small></div>
-        <div class="time-box"><span id="hours">0</span><small>Giờ</small></div>
-        <div class="time-box"><span id="minutes">0</span><small>Phút</small></div>
-        <div class="time-box"><span id="seconds">0</span><small>Giây</small></div>
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div class="cover-badge">Confidential · Master Project Brief · Rev 1.0</div>
+  <h1>PERSONAL<br>UNIVERSE</h1>
+  <h2>5000 m² · Hà Nội</h2>
+  <div class="cover-stats">
+    <div class="stat">
+      <span class="stat-num">5,000</span>
+      <span class="stat-label">m² Đất</span>
     </div>
-</div>
-
-<div class="intro">
-    7 ngày không dài.  
-    Nhưng đủ để anh thấy em không phải là người anh muốn lướt qua.
-</div>
-
-<div class="section">
-    <h2>7 điều anh thích ở em</h2>
-    <div class="cards">
-        <div class="card">Cách em lắng nghe anh nói, dù là chuyện nhỏ xíu.</div>
-        <div class="card">Những lúc em suy nghĩ nhiều nhưng vẫn cố tỏ ra bình thường.</div>
-        <div class="card">Cách em làm những điều giản đơn trở nên đặc biệt.</div>
-        <div class="card">Sự dịu dàng rất riêng mà không phải ai cũng thấy.</div>
-        <div class="card">Năng lượng vừa nhẹ nhàng vừa khó đoán của em.</div>
-        <div class="card">Cảm giác an toàn khi ở cạnh em.</div>
-        <div class="card">Và đơn giản là… vì đó là em.</div>
+    <div class="stat">
+      <span class="stat-num">500</span>
+      <span class="stat-label">m² Villa</span>
     </div>
+    <div class="stat">
+      <span class="stat-num">13</span>
+      <span class="stat-label">Zones</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">300+</span>
+      <span class="stat-label">Line Items</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">No</span>
+      <span class="stat-label">Budget Limit</span>
+    </div>
+  </div>
+  <div class="total-price-banner">TỔNG DỰ TOÁN: 284,400,000,000 VNĐ ≈ USD 11.2M</div>
 </div>
 
-<button onclick="showClimax()">Nếu em là của anh 💗</button>
-
-<div id="overlay">
-    <p>
-        Cảm ơn vì 7 ngày vừa rồi. <br><br>
-        Anh mong sẽ còn rất nhiều lần "7 ngày" như thế nữa,<br>
-        cùng Linh. ✨
-    </p>
+<!-- ===== TOC ===== -->
+<div class="toc">
+  <div class="section-label">// MỤC LỤC — TABLE OF CONTENTS</div>
+  <div class="toc-grid">
+    <a class="toc-item" href="#zone-sports">
+      <span class="toc-num">01</span>
+      <span class="toc-name">Sports Zone — NBA + Football</span>
+      <span class="toc-price">~36.5 tỷ</span>
+    </a>
+    <a class="toc-item" href="#zone-gym">
+      <span class="toc-num">02</span>
+      <span class="toc-name">Gym + Recovery Elite</span>
+      <span class="toc-price">~18.2 tỷ</span>
+    </a>
+    <a class="toc-item" href="#zone-ent">
+      <span class="toc-num">03</span>
+      <span class="toc-name">Private Entertainment City</span>
+      <span class="toc-price">~35.4 tỷ</span>
+    </a>
+    <a class="toc-item" href="#zone-museum">
+      <span class="toc-num">04</span>
+      <span class="toc-name">Collector Museum + Vault</span>
+      <span class="toc-price">~14.8 tỷ</span>
+    </a>
+    <a class="toc-item" href="#zone-kitchen">
+      <span class="toc-num">05</span>
+      <span class="toc-name">Future Kitchen</span>
+      <span class="toc-price">~8.6 tỷ</span>
+    </a>
+    <a class="toc-item" href="#zone-bath">
+      <span class="toc-num">06</span>
+      <span class="toc-name">Spa Bathroom 5 sao</span>
+      <span class="toc-price">~5.2 tỷ</span>
+    </a>
+    <a class="toc-item" href="#zone-bedroom">
+      <span class="toc-num">07</span>
+      <span class="toc-name">Recovery Pod — Master Bedroom</span>
+      <span class="toc-price">~9.8 tỷ</span>
+    </a>
+    <a class="toc-item" href="#zone-outdoor">
+      <span class="toc-num">08</span>
+      <span class="toc-name">Outdoor Resort + Sci-Fi</span>
+      <span class="toc-price">~28.4 tỷ</span>
+    </a>
+    <a class="toc-item" href="#zone-garage">
+      <span class="toc-num">09</span>
+      <span class="toc-name">Showroom Garage</span>
+      <span class="toc-price">~9.5 tỷ</span>
+    </a>
+    <a class="toc-item" href="#zone-tech">
+      <span class="toc-num">10</span>
+      <span class="toc-name">Tech Lab + Workspace</span>
+      <span class="toc-price">~18.6 tỷ</span>
+    </a>
+    <a class="toc-item" href="#zone-smart">
+      <span class="toc-num">11</span>
+      <span class="toc-name">Smart Home + Security</span>
+      <span class="toc-price">~22.3 tỷ</span>
+    </a>
+    <a class="toc-item" href="#zone-infra">
+      <span class="toc-num">12</span>
+      <span class="toc-name">Hạ Tầng Kỹ Thuật</span>
+      <span class="toc-price">~16.4 tỷ</span>
+    </a>
+    <a class="toc-item" href="#zone-crazy">
+      <span class="toc-num">13</span>
+      <span class="toc-name">Crazy Features — Bonus</span>
+      <span class="toc-price">~61.2 tỷ</span>
+    </a>
+    <a class="toc-item" href="#zone-construct">
+      <span class="toc-num">—</span>
+      <span class="toc-name">Xây Dựng + Thiết Kế + Kiến Trúc</span>
+      <span class="toc-price">~39.9 tỷ</span>
+    </a>
+  </div>
 </div>
 
-<script>
-// ===== Đồng hồ =====
-const startDate = new Date("2026-02-25T00:29:00");
-function updateCounter(){
-    const now=new Date();
-    const diff=now-startDate;
-    document.getElementById("days").textContent=Math.floor(diff/(1000*60*60*24));
-    document.getElementById("hours").textContent=Math.floor((diff/(1000*60*60))%24);
-    document.getElementById("minutes").textContent=Math.floor((diff/(1000*60))%60);
-    document.getElementById("seconds").textContent=Math.floor((diff/1000)%60);
-}
-setInterval(updateCounter,1000);
-updateCounter();
+<!-- ===== ZONE 01: SPORTS ===== -->
+<div id="zone-sports" class="zone">
+  <div class="zone-header">
+    <div class="zone-icon">🏟️</div>
+    <div class="zone-meta">
+      <div class="zone-num">// ZONE 01</div>
+      <div class="zone-title">SPORTS ZONE</div>
+      <div class="zone-subtitle">NBA Training Facility · Football 7v7 · Sports Science Lab</div>
+      <div style="margin-top:10px">
+        <span class="tag tag-pro">Pro Level</span>
+        <span class="tag tag-sci">AI Analytics</span>
+        <span class="tag tag-ultra">Sci-Fi Tech</span>
+      </div>
+    </div>
+    <div class="zone-total">
+      <div class="zone-total-label">Zone Total</div>
+      <div class="zone-total-num">36,500,000,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">≈ USD 1,440,000</div>
+    </div>
+  </div>
 
-// Scroll card animation
-const cards=document.querySelectorAll('.card');
-window.addEventListener('scroll',()=>{
-    cards.forEach(card=>{
-        if(card.getBoundingClientRect().top<window.innerHeight-50){
-            card.classList.add('show');
-        }
-    });
-});
+  <!-- Basketball Court -->
+  <div class="subsection">
+    <div class="subsection-title">🏀 Sân Bóng Rổ Indoor "NBA Facility"</div>
+    <table class="item-table">
+      <thead><tr>
+        <th>Hạng Mục</th>
+        <th>Thương Hiệu / Model</th>
+        <th>SL</th>
+        <th>Đơn Giá</th>
+        <th>Thành Tiền (VNĐ)</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="item-name">Sàn gỗ Maple NBA tiêu chuẩn thi đấu</div><div class="item-spec">Kích thước 28×15m, gỗ Maple cứng Grade A, lớp finish Bona Traffic HD, chuẩn FIBA/NBA — có logo tùy chỉnh inlay</div></td>
+          <td><span class="item-brand">Connor Sport Court</span></td>
+          <td class="item-qty">1 sân</td>
+          <td class="item-price">4,800,000,000</td>
+          <td><div class="item-price">4,800,000,000</div><div class="item-usd">≈$190k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Hệ thống camera tracking AI (28 camera)</div><div class="item-spec">Second Spectrum / Hawk-Eye 8K, tracking 60fps, phân tích real-time: form bắn, tốc độ di chuyển, lực bật, heat map</div></td>
+          <td><span class="item-brand">Hawk-Eye / Second Spectrum</span></td>
+          <td class="item-qty">28 cams</td>
+          <td class="item-price">320,000,000/cam</td>
+          <td><div class="item-price">8,960,000,000</div><div class="item-usd">≈$354k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Bảng rổ điều chỉnh tự động + tempered glass</div><div class="item-spec">Spalding Arena Series, kính tempered 12mm, khung carbon fiber, điều chỉnh chiều cao motorized</div></td>
+          <td><span class="item-brand">Spalding Arena Pro</span></td>
+          <td class="item-qty">2 bộ</td>
+          <td class="item-price">280,000,000/bộ</td>
+          <td><div class="item-price">560,000,000</div><div class="item-usd">≈$22k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Màn hình LED scoreboard + replay screen</div><div class="item-spec">Daktronics 4K LED 6×4m, replay tức thì, hiển thị stat AI real-time, điều khiển iPad</div></td>
+          <td><span class="item-brand">Daktronics</span></td>
+          <td class="item-qty">2 màn</td>
+          <td class="item-price">760,000,000</td>
+          <td><div class="item-price">1,520,000,000</div><div class="item-usd">≈$60k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Hệ thống âm thanh indoor sân thi đấu</div><div class="item-spec">JBL/QSC line array, 24 loa, sub bass 4 cụm, 130dB SPL, latency <5ms, xử lý DSP</div></td>
+          <td><span class="item-brand">JBL Professional</span></td>
+          <td class="item-qty">1 hệ</td>
+          <td class="item-price">1,200,000,000</td>
+          <td><div class="item-price">1,200,000,000</div><div class="item-usd">≈$47k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Locker Room NBA chuẩn (12 tủ)</div><div class="item-spec">Tủ gỗ walnut + thép không gỉ, ghế da individualized, tên khắc, TV 32" mỗi tủ, khu vực massage cạnh đó</div></td>
+          <td><span class="item-brand">Custom Millwork</span></td>
+          <td class="item-qty">1 phòng</td>
+          <td class="item-price">950,000,000</td>
+          <td><div class="item-price">950,000,000</div><div class="item-usd">≈$37k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Hệ thống chiếu sáng LED lập trình</div><div class="item-spec">Philips Arena Plus, 240,000 lux, dimming 0–100%, chế độ game/training/chill, highlight tracking người chơi</div></td>
+          <td><span class="item-brand">Philips Lighting Pro</span></td>
+          <td class="item-qty">1 hệ</td>
+          <td class="item-price">680,000,000</td>
+          <td><div class="item-price">680,000,000</div><div class="item-usd">≈$27k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">AI software + tablet dashboard</div><div class="item-spec">Noah Basketball AI, Shoot Analysis 3D, iPad 13" Pro x4, dashboard analytics cá nhân hoá</div></td>
+          <td><span class="item-brand">Noah Basketball + Apple</span></td>
+          <td class="item-qty">1 set</td>
+          <td class="item-price">450,000,000</td>
+          <td><div class="item-price">450,000,000</div><div class="item-usd">≈$18k</div></td>
+        </tr>
+        <tr class="subtotal-row"><td colspan="4">Subtotal — Bóng Rổ</td><td class="item-price">19,120,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-// Ánh sáng chuột
-document.addEventListener("mousemove",(e)=>{
-    const light=document.getElementById("cursorLight");
-    light.style.left=e.clientX+"px";
-    light.style.top=e.clientY+"px";
-});
+  <!-- Football Pitch -->
+  <div class="subsection">
+    <div class="subsection-title">⚽ Sân Bóng Đá 7 Người — Hybrid Grass</div>
+    <table class="item-table">
+      <thead><tr>
+        <th>Hạng Mục</th>
+        <th>Thương Hiệu / Model</th>
+        <th>SL</th>
+        <th>Đơn Giá</th>
+        <th>Thành Tiền (VNĐ)</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="item-name">Cỏ Hybrid Desso GrassMaster (giống Premier League)</div><div class="item-spec">Mix 97% cỏ tự nhiên + 3% sợi nhân tạo 20cm ăn sâu vào đất, tiêu chuẩn Wembley/Allianz Arena, tưới ngầm và sưởi nền</div></td>
+          <td><span class="item-brand">Desso GrassMaster</span></td>
+          <td class="item-qty">1,200 m²</td>
+          <td class="item-price">3,200,000/m²</td>
+          <td><div class="item-price">3,840,000,000</div><div class="item-usd">≈$152k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Hệ thống tưới ngầm tự động + cảm biến độ ẩm</div><div class="item-spec">Rain Bird 40+ đầu phun ngầm, controller AI, cảm biến thời tiết, app control, tiết kiệm 40% nước</div></td>
+          <td><span class="item-brand">Rain Bird + Toro</span></td>
+          <td class="item-qty">1 hệ</td>
+          <td class="item-price">480,000,000</td>
+          <td><div class="item-price">480,000,000</div><div class="item-usd">≈$19k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">VAR mini — hệ thống camera goal-line + replay</div><div class="item-spec">8 camera 4K goal-line, 2 màn hình LED sân 3×2m, phần mềm replay instant, AI offside detection</div></td>
+          <td><span class="item-brand">ChyronHego / Hawk-Eye Lite</span></td>
+          <td class="item-qty">1 set</td>
+          <td class="item-price">1,800,000,000</td>
+          <td><div class="item-price">1,800,000,000</div><div class="item-usd">≈$71k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Khung thành FIFA chuẩn (aluminum)</div><div class="item-spec">3×2m aluminum anodized, lưới polyester UV-resistant, cột trắng premium, có thể thu gọn</div></td>
+          <td><span class="item-brand">Pila Goals Pro</span></td>
+          <td class="item-qty">2 khung</td>
+          <td class="item-price">28,000,000/cái</td>
+          <td><div class="item-price">56,000,000</div><div class="item-usd">≈$2.2k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Locker Room bóng đá (14 tủ)</div><div class="item-spec">Tủ gỗ oak, ghế da, khu vực bang-up/tactical board, projector góc chiến thuật 85", whiteboard từ tính, vòi tắm 8 đầu</div></td>
+          <td><span class="item-brand">Custom Sports Millwork</span></td>
+          <td class="item-qty">1 phòng</td>
+          <td class="item-price">780,000,000</td>
+          <td><div class="item-price">780,000,000</div><div class="item-usd">≈$31k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Hệ thống chiếu sáng sân ngoài trời LED</div><div class="item-spec">Musco TLC for LED, 1500+ lux, zero spill, điều khiển app, cột 12m x4</div></td>
+          <td><span class="item-brand">Musco Lighting</span></td>
+          <td class="item-qty">4 cột</td>
+          <td class="item-price">320,000,000/cột</td>
+          <td><div class="item-price">1,280,000,000</div><div class="item-usd">≈$51k</div></td>
+        </tr>
+        <tr class="subtotal-row"><td colspan="4">Subtotal — Bóng Đá</td><td class="item-price">8,236,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-// Climax
-function showClimax(){
-    document.getElementById("overlay").classList.add("show");
-    createHearts(30);
-    shootingStarRain();
-}
+  <!-- Sports Lab -->
+  <div class="subsection">
+    <div class="subsection-title">🧬 Sports Science Lab</div>
+    <table class="item-table">
+      <thead><tr>
+        <th>Hạng Mục</th>
+        <th>Thương Hiệu / Model</th>
+        <th>SL</th>
+        <th>Đơn Giá</th>
+        <th>Thành Tiền (VNĐ)</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="item-name">Máy đo VO2 max chuyên nghiệp</div><div class="item-spec">COSMED QUARK CPET, mask analysis real-time, kết nối với treadmill/bike, chuẩn Olympic lab, phân tích lactate threshold</div></td>
+          <td><span class="item-brand">COSMED QUARK CPET</span></td>
+          <td class="item-qty">1 máy</td>
+          <td class="item-price">760,000,000</td>
+          <td><div class="item-price">760,000,000</div><div class="item-usd">≈$30k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Hệ thống phân tích cơ bắp + phản xạ real-time</div><div class="item-spec">Noraxon Ultium EMG, 16 kênh không dây, phân tích cơ bắp 3D, force plate 60×90cm tích hợp, phần mềm myoMOTION</div></td>
+          <td><span class="item-brand">Noraxon Ultium EMG</span></td>
+          <td class="item-qty">1 set</td>
+          <td class="item-price">1,520,000,000</td>
+          <td><div class="item-price">1,520,000,000</div><div class="item-usd">≈$60k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Máy đo phản xạ Blaze Pod + Dynavision D2</div><div class="item-spec">Dynavision D2 Training Board (light board phản xạ), Blaze Pod Pro x20, reaction time 1ms precision, app tracking</div></td>
+          <td><span class="item-brand">Dynavision + Blaze Pod</span></td>
+          <td class="item-qty">1 set</td>
+          <td class="item-price">340,000,000</td>
+          <td><div class="item-price">340,000,000</div><div class="item-usd">≈$13.5k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Treadmill lab + bike ergometer</div><div class="item-spec">Woodway Curve Force, tốc độ 0–40km/h, Wattbike Atom Next Gen, kết nối VO2 analyzer, Garmin HRM Pro</div></td>
+          <td><span class="item-brand">Woodway + Wattbike</span></td>
+          <td class="item-qty">1+1</td>
+          <td class="item-price">760,000,000</td>
+          <td><div class="item-price">760,000,000</div><div class="item-usd">≈$30k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Body composition scanner DEXA</div><div class="item-spec">Hologic Horizon DXA, phân tích body fat/lean mass theo từng phân đoạn, precision ±1%, chuẩn Olympic team</div></td>
+          <td><span class="item-brand">Hologic Horizon DXA</span></td>
+          <td class="item-qty">1 máy</td>
+          <td class="item-price">2,540,000,000</td>
+          <td><div class="item-price">2,540,000,000</div><div class="item-usd">≈$100k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Lab workstation + analysis monitors</div><div class="item-spec">Dual Dell 32" 4K IPS, workstation Dell Precision 7960, storage NAS 20TB, phần mềm Catapult Sports</div></td>
+          <td><span class="item-brand">Dell + Catapult Sports</span></td>
+          <td class="item-qty">1 set</td>
+          <td class="item-price">180,000,000</td>
+          <td><div class="item-price">180,000,000</div><div class="item-usd">≈$7k</div></td>
+        </tr>
+        <tr class="subtotal-row"><td colspan="4">Subtotal — Sports Lab</td><td class="item-price">6,100,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-// Tim
-function createHearts(count){
-    for(let i=0;i<count;i++){
-        let heart=document.createElement("div");
-        heart.innerHTML="❤";
-        heart.classList.add("heart");
-        heart.style.left=Math.random()*100+"vw";
-        heart.style.fontSize=(Math.random()*20+15)+"px";
-        document.body.appendChild(heart);
-        setTimeout(()=>heart.remove(),4000);
-    }
-}
+  <div class="note"><strong>Lưu ý Zone 01:</strong> Tổng zone 01 bao gồm chi phí lắp đặt, điều hòa không khí cho sân indoor, hệ thống lọc không khí HEPA, và thi công nội thất phụ trợ. Estimated install + commissioning: ~3,044,000,000 VNĐ.</div>
+</div>
 
-// Mưa sao băng
-function shootingStarRain(){
-    for(let i=0;i<20;i++){
-        setTimeout(()=>{
-            let star=document.createElement("div");
-            star.classList.add("shooting-star");
-            star.style.top=Math.random()*50+"vh";
-            star.style.left=window.innerWidth+"px";
-            document.body.appendChild(star);
-            setTimeout(()=>star.remove(),1000);
-        },i*150);
-    }
-}
+<!-- ===== ZONE 02: GYM + RECOVERY ===== -->
+<div id="zone-gym" class="zone">
+  <div class="zone-header">
+    <div class="zone-icon">🏋️</div>
+    <div class="zone-meta">
+      <div class="zone-num">// ZONE 02</div>
+      <div class="zone-title">GYM + RECOVERY</div>
+      <div class="zone-subtitle">Elite Athlete Level · Custom Equipment · Cryotherapy · Hyperbaric</div>
+    </div>
+    <div class="zone-total">
+      <div class="zone-total-label">Zone Total</div>
+      <div class="zone-total-num">18,200,000,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">≈ USD 718,000</div>
+    </div>
+  </div>
 
-// Bí mật click 5 lần
-let clickCount=0;
-document.getElementById("nameClick").addEventListener("click",()=>{
-    clickCount++;
-    if(clickCount==5){
-        alert("Anh chọn em.");
-    }
-});
-</script>
+  <div class="subsection">
+    <div class="subsection-title">🔥 Gym — Custom Full Equipment</div>
+    <table class="item-table">
+      <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="item-name">Hệ thống máy tập custom theo cơ thể — Full Stack</div><div class="item-spec">Eleiko WPPO Olympic Barbell, racks Power Rack Eleiko Sport, đặt riêng theo số đo: shoulder press, chest fly, leg press, lat pulldown, cable stack 200kg, seated row</div></td>
+          <td><span class="item-brand">Eleiko + Rogue Custom</span></td>
+          <td class="item-qty">12 máy</td>
+          <td class="item-price">180,000,000/máy avg</td>
+          <td><div class="item-price">2,160,000,000</div><div class="item-usd">≈$85k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Tạ tự do Olympic Set + bumper plates</div><div class="item-spec">Eleiko Olympic Training Bar 20kg, bumper plates 2.5–25kg full set, Rogue DB-90 dumbbell rack 5–60kg, kettlebell 8–48kg</div></td>
+          <td><span class="item-brand">Eleiko + Rogue</span></td>
+          <td class="item-qty">1 set</td>
+          <td class="item-price">480,000,000</td>
+          <td><div class="item-price">480,000,000</div><div class="item-usd">≈$19k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">AI Coach real-time (EGYM Smart Strength System)</div><div class="item-spec">EGYM Smart Series 8 máy, sensor cơ học điện tử, AI điều chỉnh lực cản/tempo tự động, dashboard kết nối app, form correction visual</div></td>
+          <td><span class="item-brand">EGYM Smart Series</span></td>
+          <td class="item-qty">8 máy</td>
+          <td class="item-price">240,000,000/máy</td>
+          <td><div class="item-price">1,920,000,000</div><div class="item-usd">≈$76k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Sàn rubber gym premium + mirror wall</div><div class="item-spec">Regupol Fitness sàn 20mm shock absorption, mirror tempered 6mm toàn tường 8m, viền chrome inox</div></td>
+          <td><span class="item-brand">Regupol + Pilkington</span></td>
+          <td class="item-qty">80 m²</td>
+          <td class="item-price">2,800,000/m²</td>
+          <td><div class="item-price">224,000,000</div><div class="item-usd">≈$8.8k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Cardio machines elite</div><div class="item-spec">Concept2 RowErg, SkiErg, BikeErg; Life Fitness Platinum Club treadmill 22"; Stairmaster FreeClimber — tất cả kết nối EGYM Fitness Hub</div></td>
+          <td><span class="item-brand">Concept2 + Life Fitness</span></td>
+          <td class="item-qty">5 thiết bị</td>
+          <td class="item-price">120,000,000 avg</td>
+          <td><div class="item-price">600,000,000</div><div class="item-usd">≈$24k</div></td>
+        </tr>
+        <tr class="subtotal-row"><td colspan="4">Subtotal — Gym Equipment</td><td class="item-price">5,384,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">❄️ Recovery Zone — World Class</div>
+    <table class="item-table">
+      <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="item-name">Cryotherapy Chamber toàn thân -110°C</div><div class="item-spec">Zimmer CryoSpace Evolution, Nitrogen & Electric -110°C, 3 phút session, touch panel, an toàn tự động, dùng bởi NBA/NFL players</div></td>
+          <td><span class="item-brand">Zimmer CryoSpace</span></td>
+          <td class="item-qty">1 buồng</td>
+          <td class="item-price">4,060,000,000</td>
+          <td><div class="item-price">4,060,000,000</div><div class="item-usd">≈$160k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Ice Bath Pod tự điều chỉnh nhiệt — The MOROZKO Forge</div><div class="item-spec">Morozko Forge stainless steel, dải nhiệt -2°C đến +40°C, app control, ozone filter, 380L, chuẩn biathlete training</div></td>
+          <td><span class="item-brand">Morozko Forge</span></td>
+          <td class="item-qty">1 pod</td>
+          <td class="item-price">380,000,000</td>
+          <td><div class="item-price">380,000,000</div><div class="item-usd">≈$15k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Hyperbaric Oxygen Chamber 2.0 ATA</div><div class="item-spec">OxyHealth Fortius 420, 2.0 ATA, 2 người, acrylic clear shell, built-in entertainment, FDA 510(k) cleared, dùng bởi LeBron James</div></td>
+          <td><span class="item-brand">OxyHealth Fortius 420</span></td>
+          <td class="item-qty">1 buồng</td>
+          <td class="item-price">2,540,000,000</td>
+          <td><div class="item-price">2,540,000,000</div><div class="item-usd">≈$100k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Compression therapy system NormaTec</div><div class="item-spec">Hyperice NormaTec 3 Pro Full Body, chân + hông + tay, Bluetooth, app control, 7 zones per limb</div></td>
+          <td><span class="item-brand">Hyperice NormaTec 3 Pro</span></td>
+          <td class="item-qty">2 bộ</td>
+          <td class="item-price">32,000,000/bộ</td>
+          <td><div class="item-price">64,000,000</div><div class="item-usd">≈$2.5k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Infrared Sauna phòng riêng (4 người)</div><div class="item-spec">Sunlighten mPulse Believe, fullspectrum IR, chromotherapy, audio system built-in, teak wood, 360° heat, Bluetooth app</div></td>
+          <td><span class="item-brand">Sunlighten mPulse</span></td>
+          <td class="item-qty">1 phòng</td>
+          <td class="item-price">640,000,000</td>
+          <td><div class="item-price">640,000,000</div><div class="item-usd">≈$25k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Red Light Therapy panel toàn thân</div><div class="item-spec">Joovv Solo 3.0 x4 panels, 660nm+850nm dual wavelength, FDA cleared, phủ 100% cơ thể, timer app</div></td>
+          <td><span class="item-brand">Joovv Solo 3.0</span></td>
+          <td class="item-qty">4 panel</td>
+          <td class="item-price">40,000,000/panel</td>
+          <td><div class="item-price">160,000,000</div><div class="item-usd">≈$6.3k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Massage chair + percussion gun station</div><div class="item-spec">Massage Master Sofa (Inada Dreamwave) x2; Theragun PRO Plus x3, Hyperice Hypervolt 2 Pro x3, charging station</div></td>
+          <td><span class="item-brand">Inada + Theragun</span></td>
+          <td class="item-qty">1 station</td>
+          <td class="item-price">280,000,000</td>
+          <td><div class="item-price">280,000,000</div><div class="item-usd">≈$11k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Floatation/Sensory Deprivation Tank</div><div class="item-spec">Float Lab Technologies custom pod, 600kg Epsom salt solution, 93.5°F precise, UV+ozone sanitation, ambient sound system</div></td>
+          <td><span class="item-brand">Float Lab Technologies</span></td>
+          <td class="item-qty">1 pod</td>
+          <td class="item-price">380,000,000</td>
+          <td><div class="item-price">380,000,000</div><div class="item-usd">≈$15k</div></td>
+        </tr>
+        <tr class="subtotal-row"><td colspan="4">Subtotal — Recovery</td><td class="item-price">8,504,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== ZONE 03: ENTERTAINMENT ===== -->
+<div id="zone-ent" class="zone">
+  <div class="zone-header">
+    <div class="zone-icon">🎬</div>
+    <div class="zone-meta">
+      <div class="zone-num">// ZONE 03</div>
+      <div class="zone-title">ENTERTAINMENT CITY</div>
+      <div class="zone-subtitle">Tầng Hầm · Private IMAX · Gaming Arena · F1 Sim · Nightclub · Bowling</div>
+    </div>
+    <div class="zone-total">
+      <div class="zone-total-label">Zone Total</div>
+      <div class="zone-total-num">35,400,000,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">≈ USD 1,397,000</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">🎥 Private IMAX Cinema (20 chỗ)</div>
+    <table class="item-table">
+      <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="item-name">Màn hình 4K laser IMAX-grade 7m × 3.2m</div><div class="item-spec">Stewart Filmscreen Ultramatte 150" 4K, gain 1.3, curved, acoustically transparent để loa phía sau</div></td>
+          <td><span class="item-brand">Stewart Filmscreen</span></td>
+          <td class="item-qty">1 màn</td>
+          <td class="item-price">380,000,000</td>
+          <td><div class="item-price">380,000,000</div><div class="item-usd">≈$15k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Máy chiếu laser 4K 50,000 lumen</div><div class="item-spec">Barco Loki 4K laser, 50,000 lumens, contrast 20,000:1, 3-chip DLP, hỗ trợ HDR10+, HFR 120fps, Dolby Vision</div></td>
+          <td><span class="item-brand">Barco Loki 4K</span></td>
+          <td class="item-qty">1 máy</td>
+          <td class="item-price">3,048,000,000</td>
+          <td><div class="item-price">3,048,000,000</div><div class="item-usd">≈$120k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Hệ thống Dolby Atmos 15.4.6 (Dolby Certified)</div><div class="item-spec">JBL M2 Main Monitor x2, Dolby Atmos ceiling x6, sub 18" x4, processer Dolby CP950A, decoder Trinnov Altitude 32, tổng 36 loa channel</div></td>
+          <td><span class="item-brand">JBL M2 + Dolby + Trinnov</span></td>
+          <td class="item-qty">1 hệ</td>
+          <td class="item-price">3,800,000,000</td>
+          <td><div class="item-price">3,800,000,000</div><div class="item-usd">≈$150k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Ghế recliner da thật VIP 4D (20 chỗ)</div><div class="item-spec">Fortress Seating Octane Premium, da Nappa thật, chức năng massage 4D, cup holder LED, USB-C, headphone port, sưởi ghế</div></td>
+          <td><span class="item-brand">Fortress Seating</span></td>
+          <td class="item-qty">20 ghế</td>
+          <td class="item-price">52,000,000/ghế</td>
+          <td><div class="item-price">1,040,000,000</div><div class="item-usd">≈$41k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Acoustic treatment + cách âm chuẩn studio</div><div class="item-spec">Kinetics floating floor, mass loaded vinyl, Vicoustic Cinema Round Premium panels, bass trap corners, NRC ≥0.95</div></td>
+          <td><span class="item-brand">Kinetics + Vicoustic</span></td>
+          <td class="item-qty">1 phòng</td>
+          <td class="item-price">1,520,000,000</td>
+          <td><div class="item-price">1,520,000,000</div><div class="item-usd">≈$60k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Server media + UHD Blu-ray + streaming</div><div class="item-spec">Kaleidescape Strato C Movie Player, 50TB movie server 4K HDR, Oppo UDP-205 Blu-ray, Apple TV 4K, control system Crestron</div></td>
+          <td><span class="item-brand">Kaleidescape + Crestron</span></td>
+          <td class="item-qty">1 set</td>
+          <td class="item-price">760,000,000</td>
+          <td><div class="item-price">760,000,000</div><div class="item-usd">≈$30k</div></td>
+        </tr>
+        <tr class="subtotal-row"><td colspan="4">Subtotal — IMAX Cinema</td><td class="item-price">10,548,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">🎮 Gaming Arena + F1 Simulator</div>
+    <table class="item-table">
+      <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="item-name">PC Gaming Station cực đỉnh (x10 setup)</div><div class="item-spec">RTX 5090 Ti, Core i9-15900K, 64GB DDR5, Alienware 27" QD-OLED 360Hz, chair Secretlab Titan XL, desk motorized, RGB ambient, 10Gbps direct LAN</div></td>
+          <td><span class="item-brand">Custom Build / Alienware</span></td>
+          <td class="item-qty">10 setup</td>
+          <td class="item-price">120,000,000/setup</td>
+          <td><div class="item-price">1,200,000,000</div><div class="item-usd">≈$47k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Console Station (PS5 Pro + Xbox Series X + Switch 2)</div><div class="item-spec">4 console station, Sony Bravia 77" OLED + PS5 Pro x4, Xbox Series X x4, Nintendo Switch 2 x4, soundbar Sonos Arc Ultra</div></td>
+          <td><span class="item-brand">Sony + Microsoft + Nintendo</span></td>
+          <td class="item-qty">4 station</td>
+          <td class="item-price">80,000,000/station</td>
+          <td><div class="item-price">320,000,000</div><div class="item-usd">≈$13k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">VR Full-Body Immersion Zone</div><div class="item-spec">XREAL Air 2 Ultra x4, Meta Quest 3S x4, full-body haptic suit bHaptics TactSuit x4, Omni Arena VR treadmill x2, positional tracking LiDAR</div></td>
+          <td><span class="item-brand">bHaptics + Virtuix + Meta</span></td>
+          <td class="item-qty">1 zone</td>
+          <td class="item-price">1,200,000,000</td>
+          <td><div class="item-price">1,200,000,000</div><div class="item-usd">≈$47k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">F1 Simulator PRO — Motion Platform 6DOF</div><div class="item-spec">Vesaro F1 Ultimate, 6DOF motion platform ±30°, steering force feedback 30Nm, triple 55" curved 4K, Simucube 2 Pro, pedals Heusinkveld Sprint+, seat full carbon replica, Fanatec handbrake</div></td>
+          <td><span class="item-brand">Vesaro / Simucube</span></td>
+          <td class="item-qty">1 rig</td>
+          <td class="item-price">3,800,000,000</td>
+          <td><div class="item-price">3,800,000,000</div><div class="item-usd">≈$150k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Flight Simulator Cockpit Pro</div><div class="item-spec">Prepar3D + X-Plane 12, Yoke Honeycomb Bravo + Alpha, throttle quadrant, pedals Honeycomb, 3×55" curved wrap-around, MCP replica panel</div></td>
+          <td><span class="item-brand">Custom Aviation Sim</span></td>
+          <td class="item-qty">1 rig</td>
+          <td class="item-price">480,000,000</td>
+          <td><div class="item-price">480,000,000</div><div class="item-usd">≈$19k</div></td>
+        </tr>
+        <tr class="subtotal-row"><td colspan="4">Subtotal — Gaming Arena</td><td class="item-price">7,000,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">🎳 Bowling · Billiards · Nightclub Mini</div>
+    <table class="item-table">
+      <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="item-name">Bowling Lane tournament chuẩn (2 lane)</div><div class="item-spec">QubicaAMF BES X full synthetic lane + pinsetter robot, neon LED pindecks, ball return auto, scorer system embedded, thiết kế luxury không gian</div></td>
+          <td><span class="item-brand">QubicaAMF BES X</span></td>
+          <td class="item-qty">2 lanes</td>
+          <td class="item-price">3,800,000,000/lane</td>
+          <td><div class="item-price">7,600,000,000</div><div class="item-usd">≈$300k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Bàn Billiards tournament + Snooker</div><div class="item-spec">Brunswick Gold Crown VII Pool Table + Riley Aristocrat Snooker Table, slate 1" 3-piece, cloth Simonis 860, cue rack gỗ walnut, lighting Olhausen overhead LED</div></td>
+          <td><span class="item-brand">Brunswick + Riley</span></td>
+          <td class="item-qty">2 bàn</td>
+          <td class="item-price">280,000,000/bàn</td>
+          <td><div class="item-price">560,000,000</div><div class="item-usd">≈$22k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Nightclub mini (50–100 người) — âm thanh + light show</div><div class="item-spec">d&b audiotechnik V-Series line array, sub KS21 x4, Robe ROBIN MegaPointe x8 moving head, Chauvet DJ FX Array x4, haze machine, DJ booth custom, bar counter LED</div></td>
+          <td><span class="item-brand">d&b audiotechnik + Robe</span></td>
+          <td class="item-qty">1 zone</td>
+          <td class="item-price">3,800,000,000</td>
+          <td><div class="item-price">3,800,000,000</div><div class="item-usd">≈$150k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Bar Counter thông minh + Liquor Dispenser tự động</div><div class="item-spec">Makr Shakr robotic bar system, pha cocktail tự động 200+ công thức, bar top LED edge, wine chiller 200 chai Eurocave, beer tap 8 vòi</div></td>
+          <td><span class="item-brand">Makr Shakr + Eurocave</span></td>
+          <td class="item-qty">1 bar</td>
+          <td class="item-price">1,900,000,000</td>
+          <td><div class="item-price">1,900,000,000</div><div class="item-usd">≈$75k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Karaoke / Stage setup</div><div class="item-spec">Yamaha CL5 console, JBL VTX A12 line array, Shure SM7dB vocal mic x8, LED stage lighting Aputure Nova P600c, smoke machine, trải thảm acoustic</div></td>
+          <td><span class="item-brand">Yamaha + JBL + Shure</span></td>
+          <td class="item-qty">1 stage</td>
+          <td class="item-price">760,000,000</td>
+          <td><div class="item-price">760,000,000</div><div class="item-usd">≈$30k</div></td>
+        </tr>
+        <tr class="subtotal-row"><td colspan="4">Subtotal — Bowling/Billiards/Club</td><td class="item-price">14,620,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== ZONE 04: MUSEUM ===== -->
+<div id="zone-museum" class="zone">
+  <div class="zone-header">
+    <div class="zone-icon">🏛️</div>
+    <div class="zone-meta">
+      <div class="zone-num">// ZONE 04</div>
+      <div class="zone-title">COLLECTOR MUSEUM</div>
+      <div class="zone-subtitle">Football Jersey Museum · Light Novel Library · Vault cấp ngân hàng</div>
+    </div>
+    <div class="zone-total">
+      <div class="zone-total-label">Zone Total</div>
+      <div class="zone-total-num">14,800,000,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">≈ USD 584,000</div>
+    </div>
+  </div>
+
+  <table class="item-table">
+    <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><div class="item-name">Tường trưng bày áo đấu — cảm biến + màn hình kể chuyện</div><div class="item-spec">Frame khung áo acrylic UV-proof 3mm, LED ambient riêng từng khung, cảm biến NFC tap-to-show, màn hình e-ink 7" gắn khung, server nội dung + app quản lý</div></td>
+        <td><span class="item-brand">Custom Museum Grade</span></td>
+        <td class="item-qty">200 khung</td>
+        <td class="item-price">8,000,000/khung</td>
+        <td><div class="item-price">1,600,000,000</div><div class="item-usd">≈$63k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Tủ trưng bày jersey signed + authenticated</div><div class="item-spec">Vitrina museum case, kiểm soát độ ẩm 50% RH, UV filter 99%, khóa từ, ánh sáng LED 3000K CRI 97</div></td>
+        <td><span class="item-brand">Goppion Museum Cases</span></td>
+        <td class="item-qty">20 tủ</td>
+        <td class="item-price">28,000,000/tủ</td>
+        <td><div class="item-price">560,000,000</div><div class="item-usd">≈$22k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Light Novel Library 2 tầng — kệ tùy chỉnh</div><div class="item-spec">Kệ thư viện gỗ walnut 4m cao 2 tầng, thang lăn library rolling ladder, chiếu sáng LED shelf 2700K, 5,000+ volume capacity, RFID tracking mỗi cuốn</div></td>
+        <td><span class="item-brand">Custom Woodwork + Montel</span></td>
+        <td class="item-qty">1 phòng</td>
+        <td class="item-price">1,900,000,000</td>
+        <td><div class="item-price">1,900,000,000</div><div class="item-usd">≈$75k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">AI Book Recommendation System</div><div class="item-spec">Raspberry Pi 5 cluster + custom AI model fine-tuned trên manga/LN database, màn hình touchscreen 27", RFID scanner, tích hợp Goodreads API</div></td>
+        <td><span class="item-brand">Custom AI Build</span></td>
+        <td class="item-qty">1 hệ</td>
+        <td class="item-price">120,000,000</td>
+        <td><div class="item-price">120,000,000</div><div class="item-usd">≈$4.7k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">VAULT — Phòng két bảo tàng cấp ngân hàng</div><div class="item-spec">Graffunder Euro 6000 high-security vault room, tường thép 6 inch, cửa 1000kg, khóa biometric + keypad + key 3-factor, fire-rated 4h 1200°C, dehumidifier integrated, UPS backup power, CCTV riêng 4K</div></td>
+        <td><span class="item-brand">Graffunder + Gardall</span></td>
+        <td class="item-qty">1 phòng</td>
+        <td class="item-price">3,800,000,000</td>
+        <td><div class="item-price">3,800,000,000</div><div class="item-usd">≈$150k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Nội thất + chiếu sáng museum toàn phòng</div><div class="item-spec">Track lighting Erco museum spotlight CRI 98+, dimmer Lutron Homeworks, sàn đá marble, điều hòa độc lập kiểm soát nhiệt 18°C ổn định</div></td>
+        <td><span class="item-brand">Erco + Lutron</span></td>
+        <td class="item-qty">1 set</td>
+        <td class="item-price">760,000,000</td>
+        <td><div class="item-price">760,000,000</div><div class="item-usd">≈$30k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Display áo Messi La Liga Signed Authentic + authenticated</div><div class="item-spec">PSA/DNA authentication grade 10, frame museum UV+, certificate blockchain NFT kèm</div></td>
+        <td><span class="item-brand">Authentic Signed + PSA</span></td>
+        <td class="item-qty">5 áo</td>
+        <td class="item-price">760,000,000/áo</td>
+        <td><div class="item-price">3,800,000,000</div><div class="item-usd">≈$150k</div></td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="4">Subtotal — Museum + Vault</td><td class="item-price">12,540,000,000</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== ZONE 05: KITCHEN ===== -->
+<div id="zone-kitchen" class="zone">
+  <div class="zone-header">
+    <div class="zone-icon">🍳</div>
+    <div class="zone-meta">
+      <div class="zone-num">// ZONE 05</div>
+      <div class="zone-title">FUTURE KITCHEN</div>
+      <div class="zone-subtitle">Robot Chef · AI Fridge · Smart Surface · Miele Professional</div>
+    </div>
+    <div class="zone-total">
+      <div class="zone-total-label">Zone Total</div>
+      <div class="zone-total-num">8,600,000,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">≈ USD 339,000</div>
+    </div>
+  </div>
+
+  <table class="item-table">
+    <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><div class="item-name">Robot nấu ăn tự động toàn phần</div><div class="item-spec">Moley Robotics Kitchen (robotic arms tích hợp), 5,000+ recipes, kết nối với storage tự động pick ingredients, demo level Michelin-star, custom installation</div></td>
+        <td><span class="item-brand">Moley Robotics</span></td>
+        <td class="item-qty">1 hệ</td>
+        <td class="item-price">3,800,000,000</td>
+        <td><div class="item-price">3,800,000,000</div><div class="item-usd">≈$150k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Tủ lạnh AI tự đặt đồ + camera bên trong</div><div class="item-spec">Samsung Bespoke 4-door Flex với AI Family Hub Pro, camera nhận diện thực phẩm, tự order khi hết, màn hình 32" bên ngoài, app control</div></td>
+        <td><span class="item-brand">Samsung Bespoke AI Hub</span></td>
+        <td class="item-qty">2 chiếc</td>
+        <td class="item-price">120,000,000/chiếc</td>
+        <td><div class="item-price">240,000,000</div><div class="item-usd">≈$9.5k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Bếp cảm ứng toàn mặt Bora Professional</div><div class="item-spec">Bora Professional 3.0 Full Surface Induction 120cm, hút khói tích hợp, 4 zones tự do, cảm ứng 100% mặt, power 11kW tổng</div></td>
+        <td><span class="item-brand">Bora Professional 3.0</span></td>
+        <td class="item-qty">1 bếp</td>
+        <td class="item-price">280,000,000</td>
+        <td><div class="item-price">280,000,000</div><div class="item-usd">≈$11k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Lò nướng Miele H 7860 BPX + steam oven</div><div class="item-spec">Miele H 7860 BPX pyrolytic, kết nối WiFi, Miele DGC 7860 steam combination oven, tủ ủ nóng Miele ESW 7020 x2</div></td>
+        <td><span class="item-brand">Miele</span></td>
+        <td class="item-qty">1 set</td>
+        <td class="item-price">180,000,000</td>
+        <td><div class="item-price">180,000,000</div><div class="item-usd">≈$7k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Máy rửa bát Miele G 7916 SCi + máy hút mùi</div><div class="item-spec">Miele G 7916 SCi AutoDos, Miele DA 6996 W ceiling extractor, matte black finish, app control, tự đổ nước + tự bơm nước rửa</div></td>
+        <td><span class="item-brand">Miele</span></td>
+        <td class="item-qty">2 máy</td>
+        <td class="item-price">80,000,000/máy</td>
+        <td><div class="item-price">160,000,000</div><div class="item-usd">≈$6.3k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Máy pha cà phê barista tự động + wine cellar</div><div class="item-spec">La Marzocco Linea Mini R x2, Mahlkönig E65S grinder x2, Eurocave Performance 283 wine cellar 283 bottle, Gaggenau warming drawer</div></td>
+        <td><span class="item-brand">La Marzocco + Eurocave</span></td>
+        <td class="item-qty">1 set</td>
+        <td class="item-price">380,000,000</td>
+        <td><div class="item-price">380,000,000</div><div class="item-usd">≈$15k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Mặt bếp đá Dekton + cabinet custom</div><div class="item-spec">Cosentino Dekton Ultra Compact 3cm mặt đảo + toàn bếp, tủ bếp gỗ walnut + lacquer hi-gloss theo thiết kế, hệ thống kéo thông minh Blum Tandem Plus</div></td>
+        <td><span class="item-brand">Cosentino + Blum</span></td>
+        <td class="item-qty">1 kitchen</td>
+        <td class="item-price">760,000,000</td>
+        <td><div class="item-price">760,000,000</div><div class="item-usd">≈$30k</div></td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="4">Subtotal — Kitchen</td><td class="item-price">5,800,000,000</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== ZONE 06: BATHROOM ===== -->
+<div id="zone-bath" class="zone">
+  <div class="zone-header">
+    <div class="zone-icon">🚿</div>
+    <div class="zone-meta">
+      <div class="zone-num">// ZONE 06</div>
+      <div class="zone-title">SPA BATHROOM</div>
+      <div class="zone-subtitle">5-Star Hotel Grade · TOTO Neorest · Steam Room · Chromotherapy</div>
+    </div>
+    <div class="zone-total">
+      <div class="zone-total-label">Zone Total</div>
+      <div class="zone-total-num">5,200,000,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">≈ USD 205,000</div>
+    </div>
+  </div>
+
+  <table class="item-table">
+    <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><div class="item-name">TOTO Neorest NX2 — toilet thông minh tối thượng</div><div class="item-spec">TOTO Neorest NX2, Ewater+ khử khuẩn, tự mở/đóng/flush, sưởi ghế, rửa Air-in Wonder Wave, deodorizer, LCD remote, matte gold finish option</div></td>
+        <td><span class="item-brand">TOTO Neorest NX2</span></td>
+        <td class="item-qty">4 phòng tắm</td>
+        <td class="item-price">64,000,000/cái</td>
+        <td><div class="item-price">256,000,000</div><div class="item-usd">≈$10k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Shower system đa chế độ master bathroom</div><div class="item-spec">Dornbracht MEM rain + 4 body jets + overhead shower, AXOR Starck V digital control, nhiệt độ số, pressure memory theo user, tổng 6 đầu vòi</div></td>
+        <td><span class="item-brand">Dornbracht + AXOR</span></td>
+        <td class="item-qty">1 set</td>
+        <td class="item-price">280,000,000</td>
+        <td><div class="item-price">280,000,000</div><div class="item-usd">≈$11k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Bồn tắm freestanding thạch anh + spa jets</div><div class="item-spec">Victoria+Albert Ios Quarrycast tub, 180×90cm, hydrojets Kaldewei 24 đầu, chromotherapy LED dưới nước, Bluetooth audio built-in, fill time 90s</div></td>
+        <td><span class="item-brand">Victoria+Albert + Kaldewei</span></td>
+        <td class="item-qty">1 bồn</td>
+        <td class="item-price">380,000,000</td>
+        <td><div class="item-price">380,000,000</div><div class="item-usd">≈$15k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Phòng steam riêng (Turkish Hammam)</div><div class="item-spec">Steamist SMS Plus 18kW steam generator, đá marble Calacatta toàn phòng, LED chromotherapy 16 màu, ghế massage 2 người, vòi Hammam built-in</div></td>
+        <td><span class="item-brand">Steamist + Custom Marble</span></td>
+        <td class="item-qty">1 phòng</td>
+        <td class="item-price">760,000,000</td>
+        <td><div class="item-price">760,000,000</div><div class="item-usd">≈$30k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Nội thất nhà tắm cao cấp + gương điện tử</div><div class="item-spec">Gương Moen MethodStudios smart mirror 72", thị trường/thời gian/thermostat hiển thị, anti-fog, điều chỉnh ánh sáng, lavabo Duravit Philippe Starck, faucets Hansgrohe Axor One 280</div></td>
+        <td><span class="item-brand">Duravit + Hansgrohe + Moen</span></td>
+        <td class="item-qty">4 set</td>
+        <td class="item-price">120,000,000/set</td>
+        <td><div class="item-price">480,000,000</div><div class="item-usd">≈$19k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Sàn + tường đá marble + thi công</div><div class="item-spec">Đá Calacatta Gold marble Italy sàn + tường master bath 40m², mosaic pattern sàn shower, underfloor heating Warmup 4iE</div></td>
+        <td><span class="item-brand">Calacatta + Warmup</span></td>
+        <td class="item-qty">40 m²</td>
+        <td class="item-price">12,000,000/m²</td>
+        <td><div class="item-price">480,000,000</div><div class="item-usd">≈$19k</div></td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="4">Subtotal — Spa Bathroom</td><td class="item-price">2,636,000,000</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== ZONE 07: BEDROOM ===== -->
+<div id="zone-bedroom" class="zone">
+  <div class="zone-header">
+    <div class="zone-icon">🛏️</div>
+    <div class="zone-meta">
+      <div class="zone-num">// ZONE 07</div>
+      <div class="zone-title">RECOVERY POD</div>
+      <div class="zone-subtitle">Master Bedroom · Sleep Tracking · Soundproof · 7-Star Hotel Level</div>
+    </div>
+    <div class="zone-total">
+      <div class="zone-total-label">Zone Total</div>
+      <div class="zone-total-num">9,800,000,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">≈ USD 387,000</div>
+    </div>
+  </div>
+
+  <table class="item-table">
+    <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><div class="item-name">Giường thông minh Eight Sleep Pod 4 Ultra</div><div class="item-spec">Eight Sleep Pod 4 Ultra, điều chỉnh nhiệt độ -9°C đến +45°C từng nửa giường, EEG sleep tracking, vibration alarm, HRV/SpO2 monitoring, AI tối ưu giấc ngủ, tích hợp Oura</div></td>
+        <td><span class="item-brand">Eight Sleep Pod 4 Ultra</span></td>
+        <td class="item-qty">1 giường</td>
+        <td class="item-price">152,000,000</td>
+        <td><div class="item-price">152,000,000</div><div class="item-usd">≈$6k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Mattress Hästens 2000T (chuẩn hoàng gia Thụy Điển)</div><div class="item-spec">Hästens 2000T size California King, lò xo tay buộc horsetail cotton linen 48 lớp, lifetime warranty, custom checked fabric</div></td>
+        <td><span class="item-brand">Hästens</span></td>
+        <td class="item-qty">1 giường</td>
+        <td class="item-price">3,800,000,000</td>
+        <td><div class="item-price">3,800,000,000</div><div class="item-usd">≈$150k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Cách âm tuyệt đối — acoustic room-in-room</div><div class="item-spec">Knauf Diamond Plus floating floor + ceiling, mass loaded vinyl 3 lớp, STC 65+ (studio level), ngưỡng tiếng ồn nội thất <20dB, floating door acoustic</div></td>
+        <td><span class="item-brand">Knauf + Acoustiblok</span></td>
+        <td class="item-qty">1 phòng</td>
+        <td class="item-price">760,000,000</td>
+        <td><div class="item-price">760,000,000</div><div class="item-usd">≈$30k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Hệ thống điều hòa không khí phòng ngủ riêng biệt</div><div class="item-spec">Daikin Ururu Sarara 25kW inverter, lọc virus/bacteria, kiểm soát độ ẩm 40–60%, silent mode 19dB, điều khiển Ecobee Premium thermostat learning AI</div></td>
+        <td><span class="item-brand">Daikin + Ecobee</span></td>
+        <td class="item-qty">1 hệ</td>
+        <td class="item-price">120,000,000</td>
+        <td><div class="item-price">120,000,000</div><div class="item-usd">≈$4.7k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Trần sao giả — Fiber Optic star ceiling</div><div class="item-spec">Fibre Optics UK Starscape 6,000 sợi quang, shooting stars, meteor shower effect, điều khiển app, RGB color cycle, 5m×5m trần chính xác thiên văn học</div></td>
+        <td><span class="item-brand">Fibre Optics UK Starscape</span></td>
+        <td class="item-qty">1 trần</td>
+        <td class="item-price">380,000,000</td>
+        <td><div class="item-price">380,000,000</div><div class="item-usd">≈$15k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Rèm cửa motorized blackout + circadian lighting</div><div class="item-spec">Lutron Serena motorized blackout, Philips Hue Gradient Signe ceiling 3m circadian rhythm auto adjust, tắt dần 30 phút, target lux 1 lux lúc đi ngủ</div></td>
+        <td><span class="item-brand">Lutron + Philips Hue</span></td>
+        <td class="item-qty">1 set</td>
+        <td class="item-price">180,000,000</td>
+        <td><div class="item-price">180,000,000</div><div class="item-usd">≈$7k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Nội thất phòng ngủ custom luxury</div><div class="item-spec">Tủ quần áo walk-in 20m² có đảo trung tâm, gỗ walnut + mirror + LED, Minotti armchair x2, sofa daybed B&B Italia, bàn đầu giường floating LED</div></td>
+        <td><span class="item-brand">Custom + Minotti + B&B Italia</span></td>
+        <td class="item-qty">1 set</td>
+        <td class="item-price">1,900,000,000</td>
+        <td><div class="item-price">1,900,000,000</div><div class="item-usd">≈$75k</div></td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="4">Subtotal — Master Bedroom</td><td class="item-price">7,292,000,000</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== ZONE 08: OUTDOOR ===== -->
+<div id="zone-outdoor" class="zone">
+  <div class="zone-header">
+    <div class="zone-icon">🌿</div>
+    <div class="zone-meta">
+      <div class="zone-num">// ZONE 08</div>
+      <div class="zone-title">OUTDOOR RESORT</div>
+      <div class="zone-subtitle">Infinity Pool · Koi Pond · Smart Garden · Helicopter Pad · Mini Track</div>
+    </div>
+    <div class="zone-total">
+      <div class="zone-total-label">Zone Total</div>
+      <div class="zone-total-num">28,400,000,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">≈ USD 1,120,000</div>
+    </div>
+  </div>
+
+  <table class="item-table">
+    <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><div class="item-name">Hồ bơi infinity + đáy kính</div><div class="item-spec">18×8m infinity edge infinity pool, kính tempered 40mm đáy + cạnh bên, máy lọc Hayward, sưởi nước, LED Wibre underwater RGB, điều khiển Caretaker app, phủ kính nhà kính mùa đông</div></td>
+        <td><span class="item-brand">Custom Pool Builder + Hayward</span></td>
+        <td class="item-qty">1 hồ</td>
+        <td class="item-price">7,600,000,000</td>
+        <td><div class="item-price">7,600,000,000</div><div class="item-usd">≈$300k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Hồ cá Koi + cầu kính + thác nước</div><div class="item-spec">Hồ Koi 200m² 1.5m sâu, đá basalt tự nhiên bờ, cầu kính 8m floating tempered, thác nước 3m granite, lọc nước Tetra khuẩn tích hợp UV sterilizer 80W, đèn LED underwater</div></td>
+        <td><span class="item-brand">Custom Landscape + Tetra</span></td>
+        <td class="item-qty">1 hồ</td>
+        <td class="item-price">3,800,000,000</td>
+        <td><div class="item-price">3,800,000,000</div><div class="item-usd">≈$150k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Vườn tự động AI — tưới + bón + theo dõi</div><div class="item-spec">Rain Bird ESP-SMTe controller, 80 đầu tưới, cảm biến đất thông minh PlantLink x50, drone tưới cây DJI Agras T10, robot cắt cỏ Husqvarna EPOS RTK không rào, app control toàn vườn</div></td>
+        <td><span class="item-brand">Rain Bird + Husqvarna + DJI</span></td>
+        <td class="item-qty">4,500 m²</td>
+        <td class="item-price">1,200,000/m²</td>
+        <td><div class="item-price">5,400,000,000</div><div class="item-usd">≈$213k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Đảo nhân tạo trong hồ (nhà chòi + hammock)</div><div class="item-spec">Đảo nhân tạo 80m², kết cấu EPS float + concrete, thực vật tropical, lối đi stepping stone, nhà chòi tranh tự nhiên, 2 ghế hammock luxury, solar powered lighting</div></td>
+        <td><span class="item-brand">Custom Landscape Architecture</span></td>
+        <td class="item-qty">1 đảo</td>
+        <td class="item-price">1,900,000,000</td>
+        <td><div class="item-price">1,900,000,000</div><div class="item-usd">≈$75k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Bãi đỗ trực thăng (Helipad) chuẩn ICAO</div><div class="item-spec">Helipad 20×20m ICAO H marking, surface bituminous reinforced, perimeter lighting Flash Aviation LED, windshield direction indicator, tie-down anchors, FATO marking, drainage slope 1%</div></td>
+        <td><span class="item-brand">Flash Technology + Custom</span></td>
+        <td class="item-qty">1 pad</td>
+        <td class="item-price">1,520,000,000</td>
+        <td><div class="item-price">1,520,000,000</div><div class="item-usd">≈$60k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Đường chạy mini (mini karting/running track)</div><div class="item-spec">400m track tarmac 6m rộng, cua banked 15°, guardrail Armco, chiếu sáng LED Musco 200 lux, timing system mylaps X2, pit lane 2 vị trí, có thể dùng go-kart điện</div></td>
+        <td><span class="item-brand">Custom Track + MyLaps</span></td>
+        <td class="item-qty">1 track</td>
+        <td class="item-price">3,800,000,000</td>
+        <td><div class="item-price">3,800,000,000</div><div class="item-usd">≈$150k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Go-Kart điện x2 + charging station</div><div class="item-spec">Sodi Storm RX7e electric kart, 15kW motor, 50 km/h max, lithium 20Ah, quick swap battery, charging rack 4 kart</div></td>
+        <td><span class="item-brand">Sodi Racing Karts</span></td>
+        <td class="item-qty">2 kart</td>
+        <td class="item-price">190,000,000/kart</td>
+        <td><div class="item-price">380,000,000</div><div class="item-usd">≈$15k</div></td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="4">Subtotal — Outdoor</td><td class="item-price">24,400,000,000</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== ZONE 09: GARAGE ===== -->
+<div id="zone-garage" class="zone">
+  <div class="zone-header">
+    <div class="zone-icon">🚗</div>
+    <div class="zone-meta">
+      <div class="zone-num">// ZONE 09</div>
+      <div class="zone-title">SHOWROOM GARAGE</div>
+      <div class="zone-subtitle">20 xe · Rotating Platform · Maintenance Bay · Car Lift</div>
+    </div>
+    <div class="zone-total">
+      <div class="zone-total-label">Zone Total</div>
+      <div class="zone-total-num">9,500,000,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">≈ USD 375,000</div>
+    </div>
+  </div>
+
+  <table class="item-table">
+    <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><div class="item-name">Sàn Epoxy showroom + LED strip undercar</div><div class="item-spec">Sàn Polyaspartic epoxy 3mm satin finish bền hóa chất, LED RGB dải dưới xe 40 vị trí điều khiển app, đủ cho 20 xe 1,200m²</div></td>
+        <td><span class="item-brand">Rust-Oleum + Philips Hue</span></td>
+        <td class="item-qty">1,200 m²</td>
+        <td class="item-price">1,800,000/m²</td>
+        <td><div class="item-price">2,160,000,000</div><div class="item-usd">≈$85k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Bệ xoay trưng bày xe (sàn xoay)</div><div class="item-spec">Carousel Rotating Platform 5m đường kính, tải 8,000kg, tốc độ 0–4rpm điều chỉnh, sàn marble inlay LED, điều khiển wireless remote, motor brushless silent</div></td>
+        <td><span class="item-brand">Parking Solutions Custom</span></td>
+        <td class="item-qty">2 platform</td>
+        <td class="item-price">760,000,000/cái</td>
+        <td><div class="item-price">1,520,000,000</div><div class="item-usd">≈$60k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Car Lift 4 trụ (maintenance bay)</div><div class="item-spec">Rotary SPO16 4-post lift, 7,200kg cap, 1,800mm rise, runway plates, drive-through, 240V single phase, Rotary alignment rack option</div></td>
+        <td><span class="item-brand">Rotary SPO16</span></td>
+        <td class="item-qty">2 lifts</td>
+        <td class="item-price">280,000,000/lift</td>
+        <td><div class="item-price">560,000,000</div><div class="item-usd">≈$22k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Phòng bảo dưỡng xe riêng (full tooling)</div><div class="item-spec">Snap-on EPIQ series tool chest + shadow foam, máy nén khí Atlas Copco 100L, máy cân bằng lốp Hunter, máy rửa xe áp lực Kärcher HDS 13/20, chẩn đoán Autel MaxiSYS Ultra</div></td>
+        <td><span class="item-brand">Snap-on + Atlas Copco + Autel</span></td>
+        <td class="item-qty">1 bay</td>
+        <td class="item-price">760,000,000</td>
+        <td><div class="item-price">760,000,000</div><div class="item-usd">≈$30k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Smart Parking System — số hóa vị trí xe</div><div class="item-spec">Parklio Sensors IoT 20 vị trí, app hiển thị xe nào ở đâu, camera số hiệu nhận diện tự động vào cổng, barrier tự động Came BXV</div></td>
+        <td><span class="item-brand">Parklio + Came</span></td>
+        <td class="item-qty">1 hệ</td>
+        <td class="item-price">280,000,000</td>
+        <td><div class="item-price">280,000,000</div><div class="item-usd">≈$11k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">EV Charging station + Wall Box premium</div><div class="item-spec">Tesla Wall Connector Gen 3 x6, ABB Terra 184 DC fast charger 180kW x2, load balancing system, app monitoring, solar-ready</div></td>
+        <td><span class="item-brand">Tesla + ABB Terra</span></td>
+        <td class="item-qty">8 chargers</td>
+        <td class="item-price">120,000,000 avg</td>
+        <td><div class="item-price">960,000,000</div><div class="item-usd">≈$38k</div></td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="4">Subtotal — Garage Showroom</td><td class="item-price">6,240,000,000</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== ZONE 10: TECH LAB ===== -->
+<div id="zone-tech" class="zone">
+  <div class="zone-header">
+    <div class="zone-icon">💻</div>
+    <div class="zone-meta">
+      <div class="zone-num">// ZONE 10</div>
+      <div class="zone-title">TECH LAB + WORKSPACE</div>
+      <div class="zone-subtitle">Gaming PC · AI Workstation · Private Server · Dual Monitor Pods</div>
+    </div>
+    <div class="zone-total">
+      <div class="zone-total-label">Zone Total</div>
+      <div class="zone-total-num">18,600,000,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">≈ USD 734,000</div>
+    </div>
+  </div>
+
+  <div class="note"><strong>Ghi chú:</strong> Bạn làm Tech → ít nhất 2 máy tính (Gaming + AI Workstation) + private server room riêng. Zone này thiết kế cho dân tech thực thụ.</div>
+
+  <div class="subsection">
+    <div class="subsection-title">🖥️ PC 1 — Gaming Beast (RTX 5090 Ti)</div>
+    <table class="item-table">
+      <thead><tr><th>Linh Kiện</th><th>Model</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="item-name">GPU — RTX 5090 Ti Founders Edition</div><div class="item-spec">NVIDIA RTX 5090 Ti 32GB GDDR7, 24,576 CUDA cores, 1000W TDP, NVLink, 8K gaming capable</div></td>
+          <td><span class="item-brand">NVIDIA RTX 5090 Ti</span></td>
+          <td class="item-qty">1</td>
+          <td class="item-price">80,000,000</td>
+          <td><div class="item-price">80,000,000</div><div class="item-usd">≈$3.1k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">CPU — Intel Core Ultra 9 285K</div><div class="item-spec">24C/24T, 5.7GHz boost, Arrow Lake, LGA1851, TDP 253W, gaming optimized IPC</div></td>
+          <td><span class="item-brand">Intel Core Ultra 9 285K</span></td>
+          <td class="item-qty">1</td>
+          <td class="item-price">14,000,000</td>
+          <td><div class="item-price">14,000,000</div><div class="item-usd">≈$540</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">RAM — 128GB DDR5-8000 CL38</div><div class="item-spec">G.Skill Trident Z5 Royal 128GB (4×32GB) DDR5-8000 CL38, RGB, gaming + content creation</div></td>
+          <td><span class="item-brand">G.Skill Trident Z5</span></td>
+          <td class="item-qty">128GB</td>
+          <td class="item-price">12,000,000</td>
+          <td><div class="item-price">12,000,000</div><div class="item-usd">≈$460</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Motherboard — ASUS ROG Maximus Z890 Apex</div><div class="item-spec">Z890 chipset, PCIe 5.0 x16, 6x M.2 PCIe 5.0, WiFi 7, 10GbE LAN, 30-phase VRM, OC panel</div></td>
+          <td><span class="item-brand">ASUS ROG Maximus</span></td>
+          <td class="item-qty">1</td>
+          <td class="item-price">22,000,000</td>
+          <td><div class="item-price">22,000,000</div><div class="item-usd">≈$850</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Storage — Samsung 990 Pro 4TB NVMe PCIe 5.0 × 2</div><div class="item-spec">14,700 MB/s read, RAID 0 software, 8TB total, 1 ổ game library + 1 ổ OS + recording</div></td>
+          <td><span class="item-brand">Samsung 990 Pro Gen5</span></td>
+          <td class="item-qty">2×4TB</td>
+          <td class="item-price">6,000,000/ổ</td>
+          <td><div class="item-price">12,000,000</div><div class="item-usd">≈$460</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">PSU — ASUS ROG Thor 1600W Titanium</div><div class="item-spec">1600W 80+ Titanium, fully modular, OLED watt meter, 10yr warranty</div></td>
+          <td><span class="item-brand">ASUS ROG Thor 1600W</span></td>
+          <td class="item-qty">1</td>
+          <td class="item-price">8,000,000</td>
+          <td><div class="item-price">8,000,000</div><div class="item-usd">≈$305</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Case — Lian Li O11D EVO XL + Liquid Cooling</div><div class="item-spec">Full tower tempered glass, EKWB 480mm custom loop GPU+CPU, 18× 140mm fans, RGB sync, vacuum fill port</div></td>
+          <td><span class="item-brand">Lian Li + EKWB Custom</span></td>
+          <td class="item-qty">1</td>
+          <td class="item-price">18,000,000</td>
+          <td><div class="item-price">18,000,000</div><div class="item-usd">≈$700</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Monitor Gaming — ASUS ROG Swift OLED 27" QD-OLED 360Hz</div><div class="item-spec">2560×1440 QD-OLED, 360Hz, 0.03ms GtG, HDR2000, HDMI 2.1, DP 1.4, ASUS ELMB</div></td>
+          <td><span class="item-brand">ASUS ROG Swift OLED</span></td>
+          <td class="item-qty">3 màn</td>
+          <td class="item-price">28,000,000/màn</td>
+          <td><div class="item-price">84,000,000</div><div class="item-usd">≈$3.3k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Peripherals Gaming Set cao cấp</div><div class="item-spec">Corsair K100 Air keyboard, Logitech G Pro X Superlight 2 DEX mouse, HyperX Cloud Alpha Wireless headset, SteelSeries Arctis Nova Pro Wireless x2</div></td>
+          <td><span class="item-brand">Corsair + Logitech + HyperX</span></td>
+          <td class="item-qty">1 set</td>
+          <td class="item-price">10,000,000</td>
+          <td><div class="item-price">10,000,000</div><div class="item-usd">≈$390</div></td>
+        </tr>
+        <tr class="subtotal-row"><td colspan="4">Subtotal — Gaming PC</td><td class="item-price">260,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">🧠 PC 2 — AI Workstation (Dual RTX 5090)</div>
+    <table class="item-table">
+      <thead><tr><th>Linh Kiện</th><th>Model</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="item-name">GPU — NVIDIA RTX 5090 × 2 (NVLink)</div><div class="item-spec">2× RTX 5090 32GB GDDR7, NVLink bridge 64GB VRAM combined, CUDA 24,576×2, tensor perf AI inference/training, 4-slot spacing</div></td>
+          <td><span class="item-brand">NVIDIA RTX 5090 ×2</span></td>
+          <td class="item-qty">2</td>
+          <td class="item-price">76,000,000/card</td>
+          <td><div class="item-price">152,000,000</div><div class="item-usd">≈$5.9k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">CPU — AMD Threadripper PRO 7985WX</div><div class="item-spec">64C/128T, 5.1GHz boost, 350W TDP, 8-channel DDR5, PCIe 5.0 ×128, WRX90 platform, AI/ML workload optimized</div></td>
+          <td><span class="item-brand">AMD Threadripper PRO</span></td>
+          <td class="item-qty">1</td>
+          <td class="item-price">28,000,000</td>
+          <td><div class="item-price">28,000,000</div><div class="item-usd">≈$1.1k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">RAM — 512GB DDR5 ECC Registered</div><div class="item-spec">Samsung M321R8GA0BB0 512GB (8×64GB) ECC RDIMMs DDR5-4800, AI/ML dataset loading tốc độ cao</div></td>
+          <td><span class="item-brand">Samsung Server ECC</span></td>
+          <td class="item-qty">512GB</td>
+          <td class="item-price">76,000,000</td>
+          <td><div class="item-price">76,000,000</div><div class="item-usd">≈$3k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Storage AI — 8TB NVMe Gen5 + 64TB NAS</div><div class="item-spec">Samsung 9100 Pro 8TB (OS+models) + Synology DS1823xs+ NAS 8-bay 64TB Seagate IronWolf Pro, 10GbE direct connect, dataset storage</div></td>
+          <td><span class="item-brand">Samsung + Synology</span></td>
+          <td class="item-qty">1 set</td>
+          <td class="item-price">38,000,000</td>
+          <td><div class="item-price">38,000,000</div><div class="item-usd">≈$1.5k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Motherboard WRX90 + PSU 2400W</div><div class="item-spec">ASUS Pro WS WRX90E-SAGE SE, 8×PCIe 5.0 x16, 7× M.2, IPMI BMC; Seasonic Prime TX-2400W dual-cable</div></td>
+          <td><span class="item-brand">ASUS WRX90 + Seasonic</span></td>
+          <td class="item-qty">1</td>
+          <td class="item-price">30,000,000</td>
+          <td><div class="item-price">30,000,000</div><div class="item-usd">≈$1.2k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Monitor AI Station — Dell UltraSharp 32" 6K 32-bit color</div><div class="item-spec">Dell UltraSharp UP3218K 8K 32", USB-C 90W, CAL accurate + BenQ PD3225U 32" 4K USB-C x2 — total 3 màn AI workstation</div></td>
+          <td><span class="item-brand">Dell + BenQ</span></td>
+          <td class="item-qty">3 màn</td>
+          <td class="item-price">24,000,000 avg</td>
+          <td><div class="item-price">72,000,000</div><div class="item-usd">≈$2.8k</div></td>
+        </tr>
+        <tr class="subtotal-row"><td colspan="4">Subtotal — AI Workstation</td><td class="item-price">396,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">🖥️ Private Server Room</div>
+    <table class="item-table">
+      <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><div class="item-name">Server Rack 42U premium</div><div class="item-spec">APC NetShelter SX 42U 750mm×1200mm, tempered glass door, tool-less mounting, blanking panels, cable management arms ×10</div></td>
+          <td><span class="item-brand">APC NetShelter SX</span></td>
+          <td class="item-qty">3 rack</td>
+          <td class="item-price">28,000,000/rack</td>
+          <td><div class="item-price">84,000,000</div><div class="item-usd">≈$3.3k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Máy chủ HP ProLiant DL380 Gen11 (NAS/Storage)</div><div class="item-spec">2× Xeon Platinum 8490H, 512GB RAM ECC, 24-bay SFF, 384TB raw (24×16TB SAS), RAID controller HPE P408i-a</div></td>
+          <td><span class="item-brand">HP ProLiant DL380 Gen11</span></td>
+          <td class="item-qty">1 server</td>
+          <td class="item-price">380,000,000</td>
+          <td><div class="item-price">380,000,000</div><div class="item-usd">≈$15k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">GPU AI Inference Server — NVIDIA DGX H200</div><div class="item-spec">8× H200 SXM5 141GB HBM3e GPUs, 640GB VRAM total, NVLink 900GB/s, 80GB DRAM CPU, 3.2TB NVMe, top AI inference platform</div></td>
+          <td><span class="item-brand">NVIDIA DGX H200</span></td>
+          <td class="item-qty">1 node</td>
+          <td class="item-price">15,240,000,000</td>
+          <td><div class="item-price">15,240,000,000</div><div class="item-usd">≈$601k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Network Switch 10GbE/100GbE</div><div class="item-spec">Cisco Catalyst 9500 48-port 10GbE + 8×100G uplink, PoE++ 90W, SD-Access ready, Meraki cloud management</div></td>
+          <td><span class="item-brand">Cisco Catalyst 9500</span></td>
+          <td class="item-qty">2 switch</td>
+          <td class="item-price">190,000,000/switch</td>
+          <td><div class="item-price">380,000,000</div><div class="item-usd">≈$15k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">UPS 3-phase cho server room</div><div class="item-spec">APC Symmetra LX 48kVA, hot-swap battery module, extended runtime 4h, remote management card, bypass panel</div></td>
+          <td><span class="item-brand">APC Symmetra LX 48kVA</span></td>
+          <td class="item-qty">1 hệ</td>
+          <td class="item-price">380,000,000</td>
+          <td><div class="item-price">380,000,000</div><div class="item-usd">≈$15k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Điều hòa precision cooling server room</div><div class="item-spec">Schneider Electric APC ACRD500 30kW precision cooling, N+1 redundancy, free cooling mode, remote monitoring EcoStruxure</div></td>
+          <td><span class="item-brand">Schneider Electric APC</span></td>
+          <td class="item-qty">2 unit</td>
+          <td class="item-price">180,000,000/unit</td>
+          <td><div class="item-price">360,000,000</div><div class="item-usd">≈$14k</div></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">Firewall + IDS/IPS + Zero Trust</div><div class="item-spec">Palo Alto PA-5440 NGFW, Cloudflare Access Zero Trust license, Darktrace Immune System NDR, Splunk Enterprise SIEM 5TB/day</div></td>
+          <td><span class="item-brand">Palo Alto + Cloudflare + Darktrace</span></td>
+          <td class="item-qty">1 set</td>
+          <td class="item-price">380,000,000/năm</td>
+          <td><div class="item-price">380,000,000</div><div class="item-usd">≈$15k/yr</div></td>
+        </tr>
+        <tr class="subtotal-row"><td colspan="4">Subtotal — Private Server Room</td><td class="item-price">17,204,000,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== ZONE 11: SMART HOME + SECURITY ===== -->
+<div id="zone-smart" class="zone">
+  <div class="zone-header">
+    <div class="zone-icon">🤖</div>
+    <div class="zone-meta">
+      <div class="zone-num">// ZONE 11</div>
+      <div class="zone-title">SMART HOME + SECURITY</div>
+      <div class="zone-subtitle">Level God AI · Face Recognition · Drone Patrol · Panic Room</div>
+    </div>
+    <div class="zone-total">
+      <div class="zone-total-label">Zone Total</div>
+      <div class="zone-total-num">22,300,000,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">≈ USD 880,000</div>
+    </div>
+  </div>
+
+  <table class="item-table">
+    <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><div class="item-name">Home Automation Controller toàn nhà</div><div class="item-spec">Control4 EA-5 controller + T4 In-Wall Touch panel x20 phòng, integration Apple HomeKit + Google Home, programming custom scenes, voice Siri/Google/Alexa</div></td>
+        <td><span class="item-brand">Control4 + Apple + Google</span></td>
+        <td class="item-qty">1 hệ</td>
+        <td class="item-price">760,000,000</td>
+        <td><div class="item-price">760,000,000</div><div class="item-usd">≈$30k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Camera AI 360° (toàn khu vực)</div><div class="item-spec">Avigilon H6A 4K AI camera x80, Avigilon Control Center NVR, phân tích hành vi bất thường AI, LPR nhận diện biển số, face recognition 99.8% accuracy, lưu 90 ngày 4K</div></td>
+        <td><span class="item-brand">Avigilon H6A + Motorola</span></td>
+        <td class="item-qty">80 cam</td>
+        <td class="item-price">22,000,000/cam</td>
+        <td><div class="item-price">1,760,000,000</div><div class="item-usd">≈$69k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Drone tuần tra tự động</div><div class="item-spec">DJI Dock 2 + Matrice 3TD thermal + RGB, tự động bay tuần tra theo lịch, nhận diện người lạ, return-to-dock tự sạc, tích hợp camera system báo động</div></td>
+        <td><span class="item-brand">DJI Dock 2 + Matrice 3TD</span></td>
+        <td class="item-qty">2 hệ</td>
+        <td class="item-price">760,000,000/hệ</td>
+        <td><div class="item-price">1,520,000,000</div><div class="item-usd">≈$60k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Cửa + khóa biometric toàn nhà</div><div class="item-spec">Abloy Protec2 magnetic + fingerprint + face ID x30 điểm, Dormakaba MATRIX access control system, log 100,000 sự kiện, BACnet integration, visitor pre-authorization app</div></td>
+        <td><span class="item-brand">Abloy + Dormakaba</span></td>
+        <td class="item-qty">30 điểm</td>
+        <td class="item-price">28,000,000/điểm</td>
+        <td><div class="item-price">840,000,000</div><div class="item-usd">≈$33k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">PANIC ROOM chuẩn cao cấp</div><div class="item-spec">Phòng 20m² tường thép 3" + Kevlar lót, cửa vault BankSafe, UPS 48h độc lập, oxygen filtration, food/water storage 1 tuần, com link satellite Starlink backup, camera feed riêng, vault + weapon safe</div></td>
+        <td><span class="item-brand">SafeRoom Solutions Custom</span></td>
+        <td class="item-qty">1 phòng</td>
+        <td class="item-price">5,700,000,000</td>
+        <td><div class="item-price">5,700,000,000</div><div class="item-usd">≈$225k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Hàng rào điện + cảm biến xâm nhập perimeter</div><div class="item-spec">Gallagher Perimeter Solutions, fence energizer 16J, tension detection, zone alarm, PIR outdoor Bosch DS151i x60 điểm, microwave barrier x8 đoạn</div></td>
+        <td><span class="item-brand">Gallagher + Bosch</span></td>
+        <td class="item-qty">350m fence</td>
+        <td class="item-price">8,000,000/m</td>
+        <td><div class="item-price">2,800,000,000</div><div class="item-usd">≈$110k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Trung tâm điều khiển an ninh (Security NOC)</div><div class="item-spec">Video wall 4×4 màn hình 55" 4K, Genetec Security Center platform, workstation Dell Precision x3, ghế NOC Herman Miller, UPS độc lập, điện thoại vệ tinh Thuraya backup</div></td>
+        <td><span class="item-brand">Genetec + Dell + Samsung</span></td>
+        <td class="item-qty">1 phòng</td>
+        <td class="item-price">3,800,000,000</td>
+        <td><div class="item-price">3,800,000,000</div><div class="item-usd">≈$150k</div></td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="4">Subtotal — Smart Home + Security</td><td class="item-price">17,180,000,000</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== ZONE 12: INFRASTRUCTURE ===== -->
+<div id="zone-infra" class="zone">
+  <div class="zone-header">
+    <div class="zone-icon">⚡</div>
+    <div class="zone-meta">
+      <div class="zone-num">// ZONE 12</div>
+      <div class="zone-title">HẠ TẦNG KỸ THUẬT</div>
+      <div class="zone-subtitle">Internet 100Gbps · Solar + Battery · Generator · Water Purification</div>
+    </div>
+    <div class="zone-total">
+      <div class="zone-total-label">Zone Total</div>
+      <div class="zone-total-num">16,400,000,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">≈ USD 647,000</div>
+    </div>
+  </div>
+
+  <table class="item-table">
+    <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><div class="item-name">Đường truyền internet 10–100Gbps dedicated fiber</div><div class="item-spec">Dedicated fiber leased line 10Gbps (Viettel Enterprise Fiber) + backup Starlink Business 350Mbps, SD-WAN Cisco Meraki MX600 failover <1s, WiFi 7 tri-band toàn nhà 400 AP Cisco</div></td>
+        <td><span class="item-brand">Viettel + Starlink + Cisco Meraki</span></td>
+        <td class="item-qty">1 hệ</td>
+        <td class="item-price">760,000,000 setup + 120tr/năm</td>
+        <td><div class="item-price">760,000,000</div><div class="item-usd">≈$30k setup</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Hệ thống điện mặt trời 500kWp</div><div class="item-spec">500kWp panel SunPower Maxeon 6 AC 440W (1,136 panels), inverter Fronius Symo GEN24 x20, theo dõi SolarEdge, hook up EVs + toàn nhà</div></td>
+        <td><span class="item-brand">SunPower Maxeon + Fronius</span></td>
+        <td class="item-qty">500 kWp</td>
+        <td class="item-price">14,000,000/kWp</td>
+        <td><div class="item-price">7,000,000,000</div><div class="item-usd">≈$276k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Battery storage Tesla Megapack 2XL</div><div class="item-spec">Tesla Megapack 2XL 3.9MWh, 970kW power output, 4h backup toàn nhà, fire suppression built-in, grid-forming inverter, 20yr warranty, IP55</div></td>
+        <td><span class="item-brand">Tesla Megapack 2XL</span></td>
+        <td class="item-qty">1 unit</td>
+        <td class="item-price">3,800,000,000</td>
+        <td><div class="item-price">3,800,000,000</div><div class="item-usd">≈$150k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Máy phát điện diesel dự phòng</div><div class="item-spec">Caterpillar C18 600kW standby, auto-start ATS <10s, sound attenuated container, 48h fuel tank 4,000L, remote monitoring Cat Connect</div></td>
+        <td><span class="item-brand">Caterpillar C18</span></td>
+        <td class="item-qty">1 máy</td>
+        <td class="item-price">1,900,000,000</td>
+        <td><div class="item-price">1,900,000,000</div><div class="item-usd">≈$75k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Hệ thống lọc nước toàn nhà</div><div class="item-spec">Everpure BEV-25 commercial, RO + UV sterilizer + remineralization, lưu lượng 25,000L/ngày, softener Kinetico Premier Compact, drinking water Pentair Freshpoint G5RO tại bếp</div></td>
+        <td><span class="item-brand">Everpure + Kinetico + Pentair</span></td>
+        <td class="item-qty">1 hệ</td>
+        <td class="item-price">380,000,000</td>
+        <td><div class="item-price">380,000,000</div><div class="item-usd">≈$15k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">BMS (Building Management System)</div><div class="item-spec">Siemens Desigo CC platform, tích hợp điều hòa + điện + nước + bảo mật + fire alarm + elevator, dashboard realtime energy, predictive maintenance AI</div></td>
+        <td><span class="item-brand">Siemens Desigo CC</span></td>
+        <td class="item-qty">1 hệ</td>
+        <td class="item-price">760,000,000</td>
+        <td><div class="item-price">760,000,000</div><div class="item-usd">≈$30k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Hệ thống điều hòa VRF toàn nhà</div><div class="item-spec">Daikin VRV 5-S system, 80 indoor unit, heat recovery, Intelligent Touch Manager controller, SkyAir 360° cassette, HEPA filtration + IAQ monitoring CO2/VOC toàn nhà</div></td>
+        <td><span class="item-brand">Daikin VRV 5-S</span></td>
+        <td class="item-qty">1 hệ</td>
+        <td class="item-price">1,520,000,000</td>
+        <td><div class="item-price">1,520,000,000</div><div class="item-usd">≈$60k</div></td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="4">Subtotal — Infrastructure</td><td class="item-price">16,120,000,000</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== ZONE 13: CRAZY FEATURES ===== -->
+<div id="zone-crazy" class="zone">
+  <div class="zone-header">
+    <div class="zone-icon">🧩</div>
+    <div class="zone-meta">
+      <div class="zone-num">// ZONE 13</div>
+      <div class="zone-title">CRAZY FEATURES</div>
+      <div class="zone-subtitle">Thang Máy Kính · Snow Room · Aquarium Wall · Sky Ceiling · Bể Cá Khổng Lồ</div>
+    </div>
+    <div class="zone-total">
+      <div class="zone-total-label">Zone Total</div>
+      <div class="zone-total-num">61,200,000,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">≈ USD 2,415,000</div>
+    </div>
+  </div>
+
+  <table class="item-table">
+    <thead><tr><th>Hạng Mục</th><th>Thương Hiệu</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><div class="item-name">Thang máy kính trong nhà — panoramic</div><div class="item-spec">ThyssenKrupp MULTI magnetic levitation cabin, cabin kính toàn phần 360°, 4 tầng, không cần buồng máy, silent 0.1m/s, sàn LED, gương infinite, load 630kg</div></td>
+        <td><span class="item-brand">ThyssenKrupp MULTI</span></td>
+        <td class="item-qty">1 thang</td>
+        <td class="item-price">3,800,000,000</td>
+        <td><div class="item-price">3,800,000,000</div><div class="item-usd">≈$150k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Snow Room — phòng tuyết -10°C</div><div class="item-spec">IceSpa Technologies snow room 20m², tường + trần Snow Cannon tạo tuyết thật, duy trì -10°C, lighting phỏng cực quang, cửa kép airlock, ghế đá granite, timer session</div></td>
+        <td><span class="item-brand">IceSpa Technologies</span></td>
+        <td class="item-qty">1 phòng</td>
+        <td class="item-price">1,900,000,000</td>
+        <td><div class="item-price">1,900,000,000</div><div class="item-usd">≈$75k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Bể cá khổng lồ xuyên tường (tunnel aquarium)</div><div class="item-spec">Ripleys Aquarium-grade acrylic 10cm dày, volume 200,000L, tunnel walk-through 6m, cá mập + ray, Oase filtration system 5,000L/h, auto feeding, coral reef section, night mode, app monitoring</div></td>
+        <td><span class="item-brand">Reynolds Polymer + Oase</span></td>
+        <td class="item-qty">1 hệ</td>
+        <td class="item-price">19,000,000,000</td>
+        <td><div class="item-price">19,000,000,000</div><div class="item-usd">≈$750k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Trần bầu trời sao fiber optic toàn nhà (phòng chính)</div><div class="item-spec">Fiber Optic Starscape 12,000 sợi, phòng 10×10m, Milky Way pattern, shooting star 50x/đêm, UV blacklight reactive, dim-up sunrise alarm, constellation labeling AR companion app</div></td>
+        <td><span class="item-brand">Starscape Fibre UK Custom</span></td>
+        <td class="item-qty">2 phòng</td>
+        <td class="item-price">760,000,000/phòng</td>
+        <td><div class="item-price">1,520,000,000</div><div class="item-usd">≈$60k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Phòng VR Full Immersion — Holodeck style</div><div class="item-spec">20m² VR room, projection mapping 360° (Christie MicroTiles x24), positional tracking OptiTrack Motive, floor haptic Subpac M2X x20, wind generator 8 zones, scent diffuser 16 cartridge, spatial audio d&b Soundscape</div></td>
+        <td><span class="item-brand">Christie + OptiTrack + d&b</span></td>
+        <td class="item-qty">1 phòng</td>
+        <td class="item-price">7,600,000,000</td>
+        <td><div class="item-price">7,600,000,000</div><div class="item-usd">≈$300k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Sân khấu biểu diễn mini</div><div class="item-spec">Sân khấu 8m×6m + backdrop LED wall 10×6m ROE Visual Carbon CB5, lighting Robe T11 Profile x12 + wash, fog machine Jem ZR44, truss flying system, PA d&b V-Series line array, mix console Yamaha QL5, capacity 100 người</div></td>
+        <td><span class="item-brand">ROE Visual + d&b + Yamaha</span></td>
+        <td class="item-qty">1 stage</td>
+        <td class="item-price">7,600,000,000</td>
+        <td><div class="item-price">7,600,000,000</div><div class="item-usd">≈$300k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Phòng thiền + Floating meditation pod</div><div class="item-spec">Samadhi Tank Pro sensory deprivation x2, binaural beat audio system Sennheiser, ambient LED Hue gradient, air ionizer Dyson HP09, thiết kế Japandi tối giản, Tatami platform, stone garden</div></td>
+        <td><span class="item-brand">Samadhi + Dyson + Hue</span></td>
+        <td class="item-qty">1 phòng</td>
+        <td class="item-price">760,000,000</td>
+        <td><div class="item-price">760,000,000</div><div class="item-usd">≈$30k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Phòng thu âm studio chuẩn</div><div class="item-spec">Acoustic room-in-room, SSL Origin 16+ console, ADAM Audio S5H monitors, Pro Tools HDX rig, Neumann U87Ai x4, guitar amp Friedman BE-100 + Kemper Profiler, isolation booth, Izotope Ozone AI mastering</div></td>
+        <td><span class="item-brand">SSL + ADAM Audio + Neumann</span></td>
+        <td class="item-qty">1 studio</td>
+        <td class="item-price">3,800,000,000</td>
+        <td><div class="item-price">3,800,000,000</div><div class="item-usd">≈$150k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Trung tâm art/anime/NFT display wall</div><div class="item-spec">Samsung The Frame 85" x12 (phòng trưng bày), kết nối NFT/blockchain display platform Fairchain, custom framing, lighting gallery-grade Erco, management app curate collection</div></td>
+        <td><span class="item-brand">Samsung + Erco + Fairchain</span></td>
+        <td class="item-qty">12 màn</td>
+        <td class="item-price">50,000,000/màn</td>
+        <td><div class="item-price">600,000,000</div><div class="item-usd">≈$24k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Golf Simulator indoor</div><div class="item-spec">Full Swing Golf PRO simulator, 4K projector Optoma UHZ50, screen 5×3m, SkyTrak+ launch monitor, 65+ courses, mat TrueStrike, netting surround golf cage</div></td>
+        <td><span class="item-brand">Full Swing Golf + SkyTrak+</span></td>
+        <td class="item-qty">1 bay</td>
+        <td class="item-price">760,000,000</td>
+        <td><div class="item-price">760,000,000</div><div class="item-usd">≈$30k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Hồ bơi nước lạnh + plunge pool</div><div class="item-spec">Plunge Pro 2.0 cold plunge pool, nhiệt 3–45°C auto, ozone+UV sanitation, app session tracking, phòng outdoor covered, deck teak premium, LED underwater</div></td>
+        <td><span class="item-brand">Plunge + Custom Deck</span></td>
+        <td class="item-qty">1 pool</td>
+        <td class="item-price">380,000,000</td>
+        <td><div class="item-price">380,000,000</div><div class="item-usd">≈$15k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Pet Zone luxury + AI feeding</div><div class="item-spec">Phòng thú cưng 30m², PetSafe Smart Feed robot feeder x4, Pawbo Life camera interactive, treadmill thú cưng DogPacer, indoor dog run, fountain nước tự động, cam theo dõi riêng</div></td>
+        <td><span class="item-brand">PetSafe + Pawbo + DogPacer</span></td>
+        <td class="item-qty">1 zone</td>
+        <td class="item-price">380,000,000</td>
+        <td><div class="item-price">380,000,000</div><div class="item-usd">≈$15k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Greenhouse vườn thực vật tự động (indoor farm)</div><div class="item-spec">Greenhouse kính 100m², LED grow light Gavita 3/750e x50, hydroponic NFT system 500 cây, sensors cO2/humidity/EC, automation Dosatron, harvest fresh vegetables + herbs hàng ngày</div></td>
+        <td><span class="item-brand">Gavita + Dosatron</span></td>
+        <td class="item-qty">100 m²</td>
+        <td class="item-price">4,800,000/m²</td>
+        <td><div class="item-price">480,000,000</div><div class="item-usd">≈$19k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Trực thăng riêng Bell 505 Jet Ranger X</div><div class="item-spec">Bell 505 Jet Ranger X, 5 chỗ, Pratt & Whitney Canada PT6, range 695km, cruise 232km/h, Garmin G1000 NXi avionics, lưu tại helipad, hangar che nắng mưa</div></td>
+        <td><span class="item-brand">Bell 505 Jet Ranger X</span></td>
+        <td class="item-qty">1 chiếc</td>
+        <td class="item-price">10,150,000,000</td>
+        <td><div class="item-price">10,150,000,000</div><div class="item-usd">≈$400k</div></td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="4">Subtotal — Crazy Features</td><td class="item-price">58,730,000,000</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== CONSTRUCTION ===== -->
+<div id="zone-construct" class="zone">
+  <div class="zone-header">
+    <div class="zone-icon">🏗️</div>
+    <div class="zone-meta">
+      <div class="zone-num">// CONSTRUCTION</div>
+      <div class="zone-title">XÂY DỰNG + THIẾT KẾ</div>
+      <div class="zone-subtitle">Kiến trúc · Nội thất · Thi công · Giám sát</div>
+    </div>
+    <div class="zone-total">
+      <div class="zone-total-label">Zone Total</div>
+      <div class="zone-total-num">39,900,000,000</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:4px">≈ USD 1,574,000</div>
+    </div>
+  </div>
+
+  <table class="item-table">
+    <thead><tr><th>Hạng Mục</th><th>Đơn Vị</th><th>SL</th><th>Đơn Giá</th><th>Thành Tiền (VNĐ)</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><div class="item-name">Phí thiết kế kiến trúc quốc tế</div><div class="item-spec">Kiến trúc sư quốc tế hạng A, concept design + design development + construction documents, BIM model Revit, landscape design, 2 năm thiết kế</div></td>
+        <td><span class="item-brand">International Arch. Firm</span></td>
+        <td class="item-qty">tổng gói</td>
+        <td class="item-price">—</td>
+        <td><div class="item-price">5,700,000,000</div><div class="item-usd">≈$225k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Thi công phần thô — biệt thự 500m² 4 tầng + 1 hầm</div><div class="item-spec">Bê tông cốt thép chuẩn cao cấp, sàn post-tension, tường chịu lực 300mm, móng bè sâu 3m, waterproof toàn tầng hầm</div></td>
+        <td><span class="item-brand">Contractor A+</span></td>
+        <td class="item-qty">500 m² × 5 tầng</td>
+        <td class="item-price">8,000,000/m²</td>
+        <td><div class="item-price">20,000,000,000</div><div class="item-usd">≈$790k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Hoàn thiện nội thất premium toàn nhà</div><div class="item-spec">Sàn gỗ engineered Boen/Kahrs 500m², trần thạch cao floating 3-layer, sơn Farrow & Ball, cửa âm tường pivot door Oikos, thi công nội thất custom luxury</div></td>
+        <td><span class="item-brand">Luxury Interior Contractor</span></td>
+        <td class="item-qty">500 m²</td>
+        <td class="item-price">12,000,000/m²</td>
+        <td><div class="item-price">6,000,000,000</div><div class="item-usd">≈$237k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Hạ tầng MEP (điện + nước + HVAC toàn nhà)</div><div class="item-spec">Điện 3 pha EMC-safe, ống nước PPR, hệ thống M&E BIM-coordinated, cabling CAT8 + fiber backbone, conduit underfloor, chi phí M&E toàn công trình</div></td>
+        <td><span class="item-brand">MEP Specialist Contractor</span></td>
+        <td class="item-qty">tổng gói</td>
+        <td class="item-price">—</td>
+        <td><div class="item-price">3,800,000,000</div><div class="item-usd">≈$150k</div></td>
+      </tr>
+      <tr>
+        <td><div class="item-name">Cảnh quan + đường nội khu + cổng</div><div class="item-spec">Đường asphalt nội khu 500m dài 6m rộng, cổng tự động CAME BXV, tường bao 350m granite + kính, cây xanh trưởng thành, boulder stone, lighting landscape</div></td>
+        <td><span class="item-brand">Landscape Contractor</span></td>
+        <td class="item-qty">tổng gói</td>
+        <td class="item-price">—</td>
+        <td><div class="item-price">4,400,000,000</div><div class="item-usd">≈$174k</div></td>
+      </tr>
+      <tr class="subtotal-row"><td colspan="4">Subtotal — Construction</td><td class="item-price">39,900,000,000</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== GRAND TOTAL ===== -->
+<div class="grand-total">
+  <div class="grand-total-title">// TỔNG DỰ TOÁN TOÀN BỘ DỰ ÁN — GRAND TOTAL</div>
+  <div class="grand-total-num">284,400,000,000 VNĐ</div>
+  <div class="grand-total-usd">≈ USD 11,228,000 · ≈ EUR 10,320,000</div>
+
+  <div style="font-size:13px;color:var(--muted);max-width:700px;margin:0 auto 40px;line-height:1.8">
+    Tất cả thiết bị được chọn là <strong style="color:var(--white)">tối tân nhất thế giới</strong> tại thời điểm báo giá. Giá chưa bao gồm thuế nhập khẩu, phí vận chuyển quốc tế (ước tính thêm <strong style="color:var(--gold)">~8–12%</strong>), phí bảo trì hàng năm (<strong style="color:var(--gold)">~2–3%/năm</strong>), và đất nền 5,000m².
+  </div>
+
+  <div class="summary-grid">
+    <div class="summary-item">
+      <div class="summary-zone">01 · Sports Zone</div>
+      <div class="summary-val">36.5 tỷ</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-zone">02 · Gym + Recovery</div>
+      <div class="summary-val">18.2 tỷ</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-zone">03 · Entertainment City</div>
+      <div class="summary-val">35.4 tỷ</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-zone">04 · Collector Museum</div>
+      <div class="summary-val">14.8 tỷ</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-zone">05 · Future Kitchen</div>
+      <div class="summary-val">8.6 tỷ</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-zone">06 · Spa Bathroom</div>
+      <div class="summary-val">5.2 tỷ</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-zone">07 · Recovery Bedroom</div>
+      <div class="summary-val">9.8 tỷ</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-zone">08 · Outdoor Resort</div>
+      <div class="summary-val">28.4 tỷ</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-zone">09 · Showroom Garage</div>
+      <div class="summary-val">9.5 tỷ</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-zone">10 · Tech Lab + Server</div>
+      <div class="summary-val">18.6 tỷ</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-zone">11 · Smart Home + Security</div>
+      <div class="summary-val">22.3 tỷ</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-zone">12 · Hạ Tầng Kỹ Thuật</div>
+      <div class="summary-val">16.4 tỷ</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-zone">13 · Crazy Features</div>
+      <div class="summary-val">61.2 tỷ</div>
+    </div>
+    <div class="summary-item">
+      <div class="summary-zone">Xây Dựng + Thiết Kế</div>
+      <div class="summary-val">39.9 tỷ</div>
+    </div>
+    <div class="summary-item" style="background:var(--gold);color:var(--black)">
+      <div class="summary-zone" style="color:rgba(0,0,0,0.6)">GRAND TOTAL</div>
+      <div class="summary-val" style="color:var(--black)">284.4 tỷ VNĐ</div>
+    </div>
+  </div>
+
+  <div style="margin-top:60px;padding-top:40px;border-top:1px solid var(--dark4);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-align:left;max-width:800px;margin-left:auto;margin-right:auto">
+    <div style="color:var(--gold);margin-bottom:12px;letter-spacing:2px">// CHI PHÍ VẬN HÀNH ƯỚC TÍNH / NĂM</div>
+    <div style="line-height:2.2">
+      Điện + nước + internet: ~800,000,000 VNĐ/năm<br>
+      Bảo trì hệ thống + thiết bị (2.5%): ~7,110,000,000 VNĐ/năm<br>
+      Nhân sự (security + maintenance + gardener + chef): ~2,400,000,000 VNĐ/năm<br>
+      Software licenses + subscriptions: ~480,000,000 VNĐ/năm<br>
+      <strong style="color:var(--white)">TỔNG VẬN HÀNH/NĂM: ~10,790,000,000 VNĐ (~$426,000 USD)</strong>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Personal Universe — 5000m² Villa Project Brief · Prepared with Claude AI · All prices in VND at 1 USD = 25,333 VND · Rev 1.0 · Confidential
+</footer>
 
 </body>
 </html>
